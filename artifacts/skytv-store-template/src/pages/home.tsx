@@ -236,50 +236,80 @@ export default function HomePage() {
 
             <div className="flex gap-3 overflow-x-auto no-scrollbar pb-4 snap-x">
               {[
-                { name: "شاهد VIP شهر رسمي", oldPrice: "٣٣", newPrice: "١٣" },
-                { name: "اشتراك شاهد رياضة شهر", oldPrice: "٣٣", newPrice: "١٥.٩٩" },
-                { name: "شاهد VIP 3 أشهر", oldPrice: "٨٠", newPrice: "٣٥" }
+                { name: "شاهد VIP شهر رسمي", sub: "حساب شاهد شهري", oldPrice: "٣٣", newPrice: "١٣", type: "ملف خاص", duration: "شهر", sport: false },
+                { name: "اشتراك شاهد رياضة شهر", sub: "شاهد VIP الرياضية", oldPrice: "٣٣", newPrice: "١٥.٩٩", type: "مشترك", duration: "شهر", sport: true },
+                { name: "شاهد VIP 3 أشهر", sub: "حساب شاهد ربع سنوي", oldPrice: "٨٠", newPrice: "٣٥", type: "ملف خاص", duration: "3 أشهر", sport: false }
               ].map((product, i) => (
-                <div key={i} className="w-40 shrink-0 bg-[#111] rounded-xl overflow-hidden border border-[#222] snap-start flex flex-col group hover:border-yellow-400/50 transition-colors">
-                  <div className="h-48 relative bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] flex flex-col items-center justify-center p-2">
-                    {/* Badge Golden */}
-                    <div className="absolute top-0 left-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-br-xl font-bold z-10">
-                      ضمان ذهبي
-                    </div>
-                    {/* Badge Account Type */}
-                    <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-bl-xl font-bold z-10">
-                      ملف خاص
-                    </div>
-                    
-                    <div className="mt-4 flex flex-col items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-600 to-orange-500 flex items-center justify-center mb-2 shadow-lg shadow-pink-500/20">
-                        <span className="text-white font-black text-xl tracking-tighter">SHAHID</span>
+                <div key={i} className="w-44 shrink-0 rounded-2xl overflow-hidden snap-start flex flex-col group transition-all duration-200 hover:scale-[1.02] hover:shadow-2xl"
+                  style={{background:'#111', border:'1px solid #2a2a2a', boxShadow:'0 4px 20px rgba(0,0,0,0.4)'}}>
+                  {/* Card Image Area */}
+                  <div className="relative overflow-hidden" style={{height:'176px',
+                    background: product.sport
+                      ? 'linear-gradient(160deg,#0a0514 0%,#1e0533 40%,#4a0080 75%,#6d28d9 100%)'
+                      : 'linear-gradient(160deg,#0d0118 0%,#1a0230 40%,#3b0764 75%,#7c3aed 100%)'}}>
+                    {/* Glow blob */}
+                    <div className="absolute inset-0 pointer-events-none"
+                      style={{background:'radial-gradient(ellipse at 50% 60%, rgba(167,139,250,0.25) 0%, transparent 65%)'}} />
+                    {/* Diagonal lines pattern */}
+                    <div className="absolute inset-0 opacity-10 pointer-events-none"
+                      style={{backgroundImage:'repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)', backgroundSize:'12px 12px'}} />
+
+                    {/* Top badges */}
+                    <div className="absolute top-0 left-0 z-20 bg-yellow-400 text-black text-[9px] font-black px-2 py-1 rounded-br-xl">ضمان ذهبي</div>
+                    <div className="absolute top-0 right-0 z-20 text-[9px] font-black px-2 py-1 rounded-bl-xl"
+                      style={{background: product.type==='مشترك' ? '#f97316' : '#a855f7', color:'#fff'}}>{product.type}</div>
+
+                    {/* Shahid Logo */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10">
+                      <div className="flex gap-1 items-end mb-1">
+                        {[20,28,20].map((h,idx) => (
+                          <div key={idx} style={{width:'7px', height:`${h}px`, borderRadius:'3px',
+                            background: product.sport
+                              ? 'linear-gradient(to bottom,#f97316,#c2410c)'
+                              : 'linear-gradient(to bottom,#a78bfa,#7c3aed)'}} />
+                        ))}
                       </div>
-                      <span className="text-white font-bold text-lg text-center leading-tight">{product.name.split(' ').slice(0,2).join(' ')}</span>
+                      <span className="text-white font-black text-base tracking-[3px]">SHAHID</span>
+                      {product.sport && <span className="text-orange-400 text-[10px] font-bold tracking-widest">SPORTS</span>}
+                      {!product.sport && <span className="text-purple-300 text-[10px] font-bold tracking-widest">VIP</span>}
+                      <span className="text-white/50 text-[9px] mt-1">حسابات شاهد رسمية</span>
                     </div>
 
-                    <div className="absolute bottom-2 flex gap-1 justify-center w-full px-2">
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5 flex items-center gap-0.5"><Zap className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 4K</span>
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">شهر</span>
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">رسمي</span>
+                    {/* Bottom feature chips */}
+                    <div className="absolute bottom-0 left-0 right-0 px-2 pb-2 flex gap-1 justify-center z-20"
+                      style={{background:'linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 100%)'}}>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md flex items-center gap-0.5"
+                        style={{background:'rgba(255,255,255,0.1)', color:'#facc15', backdropFilter:'blur(4px)'}}>
+                        <Zap className="w-2.5 h-2.5 fill-yellow-400" />4K
+                      </span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md"
+                        style={{background:'rgba(255,255,255,0.1)', color:'#d1d5db', backdropFilter:'blur(4px)'}}>
+                        {product.duration}
+                      </span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md"
+                        style={{background:'rgba(255,255,255,0.1)', color:'#d1d5db', backdropFilter:'blur(4px)'}}>
+                        رسمي
+                      </span>
                     </div>
                   </div>
-                  <div className="p-3 flex flex-col flex-1 justify-between gap-3 border-t border-[#222]">
-                    <h4 className="text-sm font-bold text-white leading-snug">{product.name}</h4>
-                    <div>
-                      <div className="flex justify-between items-end mb-2">
-                        <div className="flex flex-col">
-                          <span className="line-through text-gray-500 text-xs">{product.oldPrice} ر.س</span>
-                          <span className="text-yellow-400 font-bold text-base">{product.newPrice} ر.س</span>
-                        </div>
-                        <button className="text-gray-400 hover:text-red-400 transition-colors">
-                          <Heart className="w-5 h-5" />
-                        </button>
+
+                  {/* Card Info */}
+                  <div className="p-3 flex flex-col gap-2 flex-1" style={{borderTop:'1px solid #222'}}>
+                    <h4 className="text-xs font-bold text-white leading-snug">{product.name}</h4>
+                    <p className="text-[10px] text-gray-500 leading-tight">{product.sub}</p>
+                    <div className="flex items-end justify-between mt-auto">
+                      <div>
+                        <div className="text-[10px] text-gray-600 line-through">{product.oldPrice} ر.س</div>
+                        <div className="text-base font-black text-yellow-400 leading-none">{product.newPrice} <span className="text-xs font-bold">ر.س</span></div>
                       </div>
-                      <button className="w-full bg-[#222] hover:bg-[#333] text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
-                        أضف للسلة 🛒
+                      <button className="text-gray-500 hover:text-red-400 transition-colors">
+                        <Heart className="w-4 h-4" />
                       </button>
                     </div>
+                    <button className="w-full text-xs font-black py-2 rounded-xl transition-all flex items-center justify-center gap-1"
+                      style={{background:'linear-gradient(135deg,#7c3aed,#a855f7)', color:'#fff', boxShadow:'0 4px 12px rgba(124,58,237,0.35)'}}>
+                      🛒 أضف للسلة
+                    </button>
                   </div>
                 </div>
               ))}
@@ -302,47 +332,75 @@ export default function HomePage() {
 
             <div className="flex gap-3 overflow-x-auto no-scrollbar pb-4 snap-x">
               {[
-                { name: "اشتراك نتفليكس شهر ملف خاص", oldPrice: "٤٠", newPrice: "١٨.٩", type: "ملف خاص", time: "شهر" },
-                { name: "اشتراك نتفليكس شهر مشترك رسمي 4K", oldPrice: "١٧", newPrice: "١١", type: "مشترك", time: "شهر" },
-                { name: "نتفليكس 3 أشهر ملف خاص", oldPrice: "١٠٠", newPrice: "٥٠", type: "ملف خاص", time: "3 أشهر" }
+                { name: "نتفليكس شهر ملف خاص", sub: "حساب نتفليكس مضمون", oldPrice: "٤٠", newPrice: "١٨.٩", type: "ملف خاص", duration: "شهر" },
+                { name: "نتفليكس شهر مشترك 4K", sub: "ملف مشترك رسمي 4K", oldPrice: "١٧", newPrice: "١١", type: "مشترك", duration: "شهر" },
+                { name: "نتفليكس 3 أشهر خاص", sub: "حساب خاص ربع سنوي", oldPrice: "١٠٠", newPrice: "٥٠", type: "ملف خاص", duration: "3 أشهر" }
               ].map((product, i) => (
-                <div key={i} className="w-40 shrink-0 bg-[#111] rounded-xl overflow-hidden border border-[#222] snap-start flex flex-col group hover:border-yellow-400/50 transition-colors">
-                  <div className="h-48 relative bg-gradient-to-b from-[#1a0505] to-[#0a0a0a] flex flex-col items-center justify-center p-2">
-                    <div className="absolute top-0 left-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-br-xl font-bold z-10">
-                      ضمان ذهبي
-                    </div>
-                    <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-bl-xl font-bold z-10">
-                      {product.type}
-                    </div>
-                    
-                    <div className="mt-4 flex flex-col items-center justify-center">
-                      <div className="w-14 h-16 bg-black rounded flex items-center justify-center mb-2 shadow-[0_0_15px_rgba(220,38,38,0.5)] border border-red-900">
-                         <span className="text-red-600 font-black text-4xl">N</span>
-                      </div>
+                <div key={i} className="w-44 shrink-0 rounded-2xl overflow-hidden snap-start flex flex-col group transition-all duration-200 hover:scale-[1.02] hover:shadow-2xl"
+                  style={{background:'#111', border:'1px solid #2a2a2a', boxShadow:'0 4px 20px rgba(0,0,0,0.4)'}}>
+                  {/* Card Image Area */}
+                  <div className="relative overflow-hidden" style={{height:'176px',
+                    background:'linear-gradient(160deg,#0d0000 0%,#1a0000 35%,#5c0000 75%,#b91c1c 100%)'}}>
+                    {/* Red glow */}
+                    <div className="absolute inset-0 pointer-events-none"
+                      style={{background:'radial-gradient(ellipse at 50% 70%, rgba(239,68,68,0.3) 0%, transparent 65%)'}} />
+                    {/* Subtle pattern */}
+                    <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
+                      style={{backgroundImage:'repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)', backgroundSize:'14px 14px'}} />
+                    {/* Top shine */}
+                    <div className="absolute top-0 left-0 right-0 h-16 pointer-events-none"
+                      style={{background:'linear-gradient(to bottom, rgba(255,255,255,0.05), transparent)'}} />
+
+                    {/* Top badges */}
+                    <div className="absolute top-0 left-0 z-20 bg-yellow-400 text-black text-[9px] font-black px-2 py-1 rounded-br-xl">ضمان ذهبي</div>
+                    <div className="absolute top-0 right-0 z-20 text-[9px] font-black px-2 py-1 rounded-bl-xl"
+                      style={{background: product.type==='مشترك' ? '#f97316' : '#dc2626', color:'#fff'}}>{product.type}</div>
+
+                    {/* Netflix N */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-1">
+                      <span className="font-black text-white leading-none select-none"
+                        style={{fontSize:'72px', fontStyle:'italic', letterSpacing:'-4px',
+                          textShadow:'0 0 40px rgba(220,38,38,0.9), 0 2px 8px rgba(0,0,0,0.8)',
+                          WebkitTextStroke:'1px rgba(255,100,100,0.3)'}}>N</span>
+                      <span className="text-red-400 text-[9px] font-black tracking-[4px] -mt-2">NETFLIX</span>
+                      <span className="text-white/40 text-[8px] mt-1">حسابات نتفليكس رسمية</span>
                     </div>
 
-                    <div className="absolute bottom-2 flex gap-1 justify-center w-full px-2">
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5 flex items-center gap-0.5"><Zap className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 4K</span>
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">{product.time}</span>
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">رسمي</span>
+                    {/* Bottom feature chips */}
+                    <div className="absolute bottom-0 left-0 right-0 px-2 pb-2 flex gap-1 justify-center z-20"
+                      style={{background:'linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 100%)'}}>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md flex items-center gap-0.5"
+                        style={{background:'rgba(255,255,255,0.1)', color:'#facc15', backdropFilter:'blur(4px)'}}>
+                        <Zap className="w-2.5 h-2.5 fill-yellow-400" />4K
+                      </span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md"
+                        style={{background:'rgba(255,255,255,0.1)', color:'#d1d5db', backdropFilter:'blur(4px)'}}>
+                        {product.duration}
+                      </span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md"
+                        style={{background:'rgba(255,255,255,0.1)', color:'#d1d5db', backdropFilter:'blur(4px)'}}>
+                        رسمي
+                      </span>
                     </div>
                   </div>
-                  <div className="p-3 flex flex-col flex-1 justify-between gap-3 border-t border-[#222]">
-                    <h4 className="text-sm font-bold text-white leading-snug">{product.name}</h4>
-                    <div>
-                      <div className="flex justify-between items-end mb-2">
-                        <div className="flex flex-col">
-                          <span className="line-through text-gray-500 text-xs">{product.oldPrice} ر.س</span>
-                          <span className="text-yellow-400 font-bold text-base">{product.newPrice} ر.س</span>
-                        </div>
-                        <button className="text-gray-400 hover:text-red-400 transition-colors">
-                          <Heart className="w-5 h-5" />
-                        </button>
+
+                  {/* Card Info */}
+                  <div className="p-3 flex flex-col gap-2 flex-1" style={{borderTop:'1px solid #222'}}>
+                    <h4 className="text-xs font-bold text-white leading-snug">{product.name}</h4>
+                    <p className="text-[10px] text-gray-500 leading-tight">{product.sub}</p>
+                    <div className="flex items-end justify-between mt-auto">
+                      <div>
+                        <div className="text-[10px] text-gray-600 line-through">{product.oldPrice} ر.س</div>
+                        <div className="text-base font-black text-yellow-400 leading-none">{product.newPrice} <span className="text-xs font-bold">ر.س</span></div>
                       </div>
-                      <button className="w-full bg-[#222] hover:bg-[#333] text-white font-bold text-xs py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
-                        أضف للسلة 🛒
+                      <button className="text-gray-500 hover:text-red-400 transition-colors">
+                        <Heart className="w-4 h-4" />
                       </button>
                     </div>
+                    <button className="w-full text-xs font-black py-2 rounded-xl transition-all flex items-center justify-center gap-1"
+                      style={{background:'linear-gradient(135deg,#991b1b,#dc2626)', color:'#fff', boxShadow:'0 4px 12px rgba(220,38,38,0.35)'}}>
+                      🛒 أضف للسلة
+                    </button>
                   </div>
                 </div>
               ))}
