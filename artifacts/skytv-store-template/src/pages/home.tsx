@@ -217,9 +217,40 @@ const CSS = `
 
   /* Footer */
   .footer{background:#050505;border-top:1px solid rgba(255,255,255,.05);padding:24px 18px 24px;}
-  .footer-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:24px;}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:18px;
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .footer-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:24px;}
+  .footer-links-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;
+    display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .ftr-link{color:#bbb;font-size:13px;text-decoration:none;font-weight:600;
+    display:flex;align-items:center;gap:7px;padding:3px 0;transition:color .2s;}
+  .ftr-link:hover{color:#f5c518;}
+  .ftr-link-dot{width:5px;height:5px;border-radius:50%;background:rgba(245,197,24,.5);
+    flex-shrink:0;transition:background .2s;}
+  .ftr-link:hover .ftr-link-dot{background:#f5c518;}
+  .ftr-col-h{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+  .ftr-col-bar{width:3px;height:18px;border-radius:2px;background:${GD};}
+  .ftr-col-title{color:#fff;font-weight:900;font-size:14px;}
+  .contact-card{background:linear-gradient(135deg,#131313,#0e0e0e);
+    border:1px solid rgba(245,197,24,.2);border-radius:16px;padding:18px 16px;
+    text-align:center;position:relative;overflow:hidden;margin-bottom:10px;}
+  .contact-card::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(245,197,24,.08) 0%,transparent 65%);
+    pointer-events:none;}
+  .pulse-ring{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;
+    background:linear-gradient(135deg,rgba(245,197,24,.15),rgba(245,197,24,.05));
+    border:1px solid rgba(245,197,24,.3);display:flex;align-items:center;justify-content:center;
+    position:relative;}
+  .pulse-ring::after{content:'';position:absolute;inset:-6px;border-radius:50%;
+    border:1px solid rgba(245,197,24,.15);animation:pulse-ring 2.5s ease-out infinite;}
+  .contact-btn{flex:1;border-radius:12px;padding:12px 10px;text-align:center;
+    text-decoration:none;font-size:12px;font-weight:800;transition:all .22s;
+    display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid;}
+  .wa-btn{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25);color:#22c55e;}
+  .wa-btn:hover{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.5);
+    box-shadow:0 6px 24px rgba(34,197,94,.15);}
+  .tg-btn{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.25);color:#60a5fa;}
+  .tg-btn:hover{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.5);
+    box-shadow:0 6px 24px rgba(59,130,246,.15);}
 
   /* Navbar */
   .navbar{position:sticky;top:0;z-index:200;backdrop-filter:blur(24px);
@@ -266,6 +297,8 @@ const CSS = `
     .nl{padding:56px 48px;}
     .footer{padding:48px 24px 28px;}
     .footer-grid{grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:32px;}
+    .footer-links-grid{display:contents;}
+    .footer-bottom{flex-direction:row;justify-content:space-between;}
 
     .prod-row{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;}
     .card{min-width:unset;flex:unset;}
@@ -644,95 +677,131 @@ export default function HomePage() {
             <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(245,197,24,.4),rgba(245,197,24,.4),transparent)", marginBottom: 20 }} />
 
             <div className="footer-grid">
-              {/* Brand */}
+
+              {/* ── Brand column ── */}
               <div>
-                <div style={{ marginBottom: 16 }}>
-                  <img src="/logo.png" alt="ماكس ستور" style={{ height: 42, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 10px rgba(245,197,24,.45))" }} />
-                </div>
-                <p style={{ color: "#777", fontSize: 12, lineHeight: 2 }}>متجرك الأول للاشتراكات الرقمية<br />بأسعار مغرية وضمان ذهبي.</p>
-                <div style={{ display: "flex", gap: 8, marginTop: 18 }}>
+                <img src="/logo.png" alt="ماكس ستور"
+                  style={{ height: 44, width: "auto", objectFit: "contain", marginBottom: 14,
+                    filter: "drop-shadow(0 0 12px rgba(245,197,24,.5))", display: "block" }} />
+                <p style={{ color: "#888", fontSize: 12.5, lineHeight: 1.9, marginBottom: 18 }}>
+                  متجرك الأول للاشتراكات الرقمية<br />بأسعار مغرية وضمان ذهبي.
+                </p>
+                {/* Social icons */}
+                <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
                   {[Instagram, MessageSquare, MessageCircle].map((Icon, i) => (
-                    <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 9, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", textDecoration: "none", transition: "all .22s" }}
-                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.35)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.06)"; }}
-                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.1)"; e.currentTarget.style.color = "#888"; e.currentTarget.style.background = "#0f0f0f"; }}>
-                      <Icon style={{ width: 15, height: 15 }} />
+                    <a key={i} href="#"
+                      style={{ width: 38, height: 38, borderRadius: 10,
+                        background: "linear-gradient(135deg,#161616,#111)",
+                        border: "1px solid rgba(245,197,24,.18)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        color: G, textDecoration: "none", transition: "all .22s",
+                        boxShadow: "0 2px 10px rgba(0,0,0,.4)" }}
+                      onMouseOver={e => { e.currentTarget.style.background = "rgba(245,197,24,.12)"; e.currentTarget.style.borderColor = "rgba(245,197,24,.5)"; e.currentTarget.style.boxShadow = "0 4px 18px rgba(245,197,24,.2)"; }}
+                      onMouseOut={e => { e.currentTarget.style.background = "linear-gradient(135deg,#161616,#111)"; e.currentTarget.style.borderColor = "rgba(245,197,24,.18)"; e.currentTarget.style.boxShadow = "0 2px 10px rgba(0,0,0,.4)"; }}>
+                      <Icon style={{ width: 16, height: 16 }} />
                     </a>
                   ))}
                 </div>
-                {/* Mini stats */}
-                <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
-                  {[["10k+", "عميل"], ["24/7", "دعم"], ["100%", "ضمان"]].map(([n, l], i) => (
-                    <div key={i} style={{ background: "#0f0f0f", border: "1px solid rgba(245,197,24,.15)", borderRadius: 9, padding: "7px 12px", textAlign: "center" }}>
-                      <div style={{ color: G, fontWeight: 900, fontSize: 13, lineHeight: 1 }}>{n}</div>
-                      <div style={{ color: "#777", fontSize: 9, marginTop: 2 }}>{l}</div>
+                {/* Mini stat pills */}
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {[["10k+", "عميل راضٍ"], ["24/7", "دعم"], ["100%", "ضمان"]].map(([n, l], i) => (
+                    <div key={i} style={{
+                      background: "linear-gradient(135deg,#141414,#111)",
+                      border: "1px solid rgba(245,197,24,.18)", borderRadius: 10,
+                      padding: "8px 14px", display: "flex", alignItems: "center", gap: 6 }}>
+                      <span style={{ color: G, fontWeight: 900, fontSize: 13, lineHeight: 1 }} dir="ltr">{n}</span>
+                      <span style={{ color: "#777", fontSize: 10, fontWeight: 600 }}>{l}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Quick links */}
-              {[
-                { h: "روابط سريعة", links: ["الرئيسية", "شاهد VIP", "نتفليكس", "ديزني+", "جميع المنتجات"] },
-                { h: "الدعم", links: ["الشروط والأحكام", "سياسة الاسترجاع", "الأسئلة الشائعة", "اتصل بنا"] },
-              ].map((col, ci) => (
-                <div key={ci}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18 }}>
-                    <div style={{ width: 3, height: 16, borderRadius: 2, background: GD }} />
-                    <h4 style={{ color: "#fff", fontWeight: 800, fontSize: 13 }}>{col.h}</h4>
-                  </div>
-                  {col.links.map((l, i) => (
-                    <div key={i} style={{ marginBottom: 11 }}>
-                      <a href="#" style={{ color: "#888", fontSize: 12.5, textDecoration: "none", fontWeight: 600, transition: "color .2s", display: "flex", alignItems: "center", gap: 6 }}
-                        onMouseOver={e => (e.currentTarget.style.color = G)}
-                        onMouseOut={e => (e.currentTarget.style.color = "#888")}>
-                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(245,197,24,.3)", flexShrink: 0, display: "inline-block" }} />
+              {/* ── Links columns (side by side on mobile) ── */}
+              <div className="footer-links-grid">
+                {[
+                  { h: "روابط سريعة", links: ["الرئيسية", "شاهد VIP", "نتفليكس", "ديزني+", "جميع المنتجات"] },
+                  { h: "الدعم", links: ["الشروط والأحكام", "سياسة الاسترجاع", "الأسئلة الشائعة", "اتصل بنا"] },
+                ].map((col, ci) => (
+                  <div key={ci}>
+                    <div className="ftr-col-h">
+                      <div className="ftr-col-bar" />
+                      <h4 className="ftr-col-title">{col.h}</h4>
+                    </div>
+                    {col.links.map((l, i) => (
+                      <a key={i} href="#" className="ftr-link" style={{ marginBottom: 10 }}>
+                        <span className="ftr-link-dot" />
                         {l}
                       </a>
-                    </div>
-                  ))}
-                </div>
-              ))}
+                    ))}
+                  </div>
+                ))}
+              </div>
 
-              {/* Contact */}
+              {/* ── Contact column ── */}
               <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18 }}>
-                  <div style={{ width: 3, height: 16, borderRadius: 2, background: GD }} />
-                  <h4 style={{ color: "#fff", fontWeight: 800, fontSize: 13 }}>تواصل معنا</h4>
+                <div className="ftr-col-h">
+                  <div className="ftr-col-bar" />
+                  <h4 className="ftr-col-title">تواصل معنا</h4>
                 </div>
-                {/* 24/7 card */}
-                <div style={{ background: "linear-gradient(135deg,#111,#0f0f0f)", border: "1px solid rgba(245,197,24,.15)", borderRadius: 14, padding: "16px 14px", marginBottom: 12, textAlign: "center", position: "relative", overflow: "hidden" }}>
-                  <div style={{ position: "absolute", top: -20, right: -20, width: 80, height: 80, background: "radial-gradient(circle,rgba(245,197,24,.08) 0%,transparent 70%)", pointerEvents: "none" }} />
-                  <div style={{ fontSize: 26, marginBottom: 6 }}>🕐</div>
-                  <div style={{ color: G, fontWeight: 900, fontSize: 20, lineHeight: 1 }}>24 / 7</div>
-                  <div style={{ color: "#777", fontSize: 10, marginTop: 4 }}>طاقمنا جاهز لخدمتك دائماً</div>
-                  {/* Response time */}
-                  <div style={{ marginTop: 10, background: "rgba(74,222,128,.07)", border: "1px solid rgba(74,222,128,.18)", borderRadius: 7, padding: "4px 10px" }}>
-                    <span style={{ color: "#4ade80", fontSize: 9.5, fontWeight: 800 }}>⚡ متوسط الرد: 3 دقائق</span>
+
+                {/* 24/7 card — redesigned */}
+                <div className="contact-card">
+                  <div className="pulse-ring">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={G} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <div style={{ color: G, fontWeight: 900, fontSize: 22, lineHeight: 1, marginBottom: 4 }} dir="ltr">24 / 7</div>
+                  <div style={{ color: "#aaa", fontSize: 11, marginBottom: 12 }}>دعم متواصل على مدار الساعة</div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 5,
+                    background: "rgba(74,222,128,.08)", border: "1px solid rgba(74,222,128,.22)",
+                    borderRadius: 8, padding: "5px 12px" }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80",
+                      boxShadow: "0 0 6px #4ade80", flexShrink: 0, animation: "pulse-dot 2s ease-in-out infinite" }} />
+                    <span style={{ color: "#4ade80", fontSize: 10.5, fontWeight: 800 }}>متوسط الرد: 3 دقائق</span>
                   </div>
                 </div>
-                {/* Buttons */}
+
+                {/* Branded contact buttons */}
                 <div style={{ display: "flex", gap: 8 }}>
-                  {[["واتساب", "💬"], ["تيليجرام", "✈️"]].map(([l, ic], i) => (
-                    <a key={i} href="#" style={{ flex: 1, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.1)", borderRadius: 10, padding: "10px 8px", textAlign: "center", textDecoration: "none", color: "#999", fontSize: 11.5, fontWeight: 800, transition: "all .2s", display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}
-                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.3)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.06)"; }}
-                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.1)"; e.currentTarget.style.color = "#999"; e.currentTarget.style.background = "#0f0f0f"; }}>
-                      <span style={{ fontSize: 16 }}>{ic}</span>
-                      <span>{l}</span>
-                    </a>
-                  ))}
+                  <a href="#" className="contact-btn wa-btn">
+                    <span style={{ fontSize: 20 }}>💬</span>
+                    <span>واتساب</span>
+                    <span style={{ fontSize: 9, opacity: .7 }}>رد فوري</span>
+                  </a>
+                  <a href="#" className="contact-btn tg-btn">
+                    <span style={{ fontSize: 20 }}>✈️</span>
+                    <span>تيليجرام</span>
+                    <span style={{ fontSize: 9, opacity: .7 }}>رد فوري</span>
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Bottom bar */}
-            <div style={{ marginTop: 36, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.04)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-              <p style={{ color: "#555", fontSize: 11 }}>© 2025 ماكس ستور — جميع الحقوق محفوظة</p>
-              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                {[["Apple Pay","#f5f5f5"], ["Visa","#60a5fa"], ["Mastercard","#e05c5c"], ["Mada","#4ade80"]].map(([m, c], i) => (
-                  <span key={i} style={{ color: c as string, fontSize: 10, fontWeight: 900, fontStyle: m === "Visa" ? "italic" : "normal" }}>{m}</span>
+            <div className="footer-bottom">
+              {/* Payment methods */}
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+                {[["Apple Pay","#ccc"], ["Visa","#60a5fa"], ["Mastercard","#f87171"], ["Mada","#4ade80"], ["STC Pay","#a78bfa"]].map(([m, c], i) => (
+                  <span key={i} style={{
+                    color: c as string, fontSize: 10.5, fontWeight: 900,
+                    fontStyle: m === "Visa" ? "italic" : "normal",
+                    background: "#0f0f0f", border: "1px solid rgba(255,255,255,.07)",
+                    borderRadius: 7, padding: "4px 10px", letterSpacing: .3 }}>
+                    {m}
+                  </span>
                 ))}
               </div>
-              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="btn-gold" style={{ background: GD, color: "#000", fontWeight: 900, fontSize: 11, padding: "6px 14px", borderRadius: 8, border: "none", boxShadow: "0 3px 12px rgba(245,197,24,.3)" }}>
+              {/* Copyright */}
+              <p style={{ color: "#555", fontSize: 11, textAlign: "center" }}>
+                © 2025 ماكس ستور — جميع الحقوق محفوظة
+              </p>
+              {/* Scroll to top */}
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="btn-gold"
+                style={{ background: GD, color: "#000", fontWeight: 900, fontSize: 11,
+                  padding: "8px 18px", borderRadius: 10, border: "none",
+                  boxShadow: "0 4px 16px rgba(245,197,24,.35)", cursor: "pointer" }}>
                 ↑ للأعلى
               </button>
             </div>
