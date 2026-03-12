@@ -6,14 +6,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap');
 
 :root {
-    --brand: #e5ad18;
-    --brand-light: #e5ad18;
+    --brand: #f5c518;
+    --brand-light: #f5c518;
     --brand-dark: #d4a80a;
-    --max-black: #1c1d1f;
+    --max-black: #0d0d0d;
     --max-card: #111111;
     --max-card2: #1a1a1a;
     --max-border: #2a2a2a;
-    --max-gold: #e5ad18;
+    --max-gold: #f5c518;
     --max-gold-dim: rgba(245, 197, 24, 0.15);
     --max-text: #ffffff;
     --max-text-muted: #aaaaaa;
