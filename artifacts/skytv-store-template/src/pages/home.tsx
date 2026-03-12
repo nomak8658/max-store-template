@@ -454,9 +454,7 @@ export default function HomePage() {
                       <span style={{
                         display: "inline-block", width: 8, height: 8, borderRadius: "50%",
                         background: GD,
-                        boxShadow: "0 0 6px 2px rgba(245,197,24,.7), 0 0 14px 4px rgba(245,197,24,.35)",
                         flexShrink: 0,
-                        animation: `pulse-dot ${1.8 + i * 0.4}s ease-in-out infinite`,
                       }} />
                       <span style={{ color: "#888", fontSize: 12, fontWeight: 700 }}>{lb}</span>
                     </div>
