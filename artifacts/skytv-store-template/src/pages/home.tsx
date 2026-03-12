@@ -95,13 +95,13 @@ const CSS = `
   .stat-item:nth-child(odd){border-left:none;border-right:1px solid rgba(245,197,24,.08);}
   .stat-item:nth-child(1),.stat-item:nth-child(2){border-bottom:1px solid rgba(245,197,24,.08);}
   .stat-n{font-weight:900;font-size:24px;line-height:1;background:${GD};-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .stat-l{color:#444;font-size:11px;font-weight:700;margin-top:5px;letter-spacing:.5px;}
+  .stat-l{color:#777;font-size:11px;font-weight:700;margin-top:5px;letter-spacing:.5px;}
 
   /* Payment */
   .pay-strip{background:linear-gradient(135deg,#0d0d0d,#111);border:1px solid rgba(255,255,255,.06);
     border-radius:16px;padding:14px 16px;margin-bottom:14px;}
   .pay-inner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-  .pay-label{color:#444;font-size:11px;font-weight:800;white-space:nowrap;}
+  .pay-label{color:#777;font-size:11px;font-weight:800;white-space:nowrap;}
   .pay-badges{display:flex;flex-wrap:wrap;gap:6px;flex:1;}
   .pay-badge{padding:5px 11px;border-radius:8px;background:#080808;
     border:1px solid rgba(255,255,255,.05);font-size:10.5px;font-weight:900;transition:all .2s;}
@@ -119,7 +119,7 @@ const CSS = `
   /* Section */
   .sec-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
   .sec-title{font-size:clamp(17px,4.5vw,24px);font-weight:900;display:flex;align-items:center;gap:8px;}
-  .sec-desc{color:#3a3a3a;font-size:11.5px;margin-top:4px;}
+  .sec-desc{color:#888;font-size:11.5px;margin-top:4px;}
   .sec-accent{height:2px;width:52px;border-radius:2px;margin-top:8px;background:${GD2};}
   .sec-all{display:flex;align-items:center;gap:5px;color:#f5c518;font-size:12px;font-weight:700;
     text-decoration:none;padding:7px 14px;border-radius:9px;
@@ -142,7 +142,7 @@ const CSS = `
   .card-info{padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px;flex:1;
     border-top:1px solid rgba(255,255,255,.06);}
   .card-name{color:#ccc;font-weight:800;font-size:11.5px;line-height:1.5;}
-  .card-old{color:#2e2e2e;font-size:9px;text-decoration:line-through;margin-bottom:1px;}
+  .card-old{color:#555;font-size:9px;text-decoration:line-through;margin-bottom:1px;}
   .card-price{color:#f5c518;font-weight:900;font-size:20px;line-height:1;}
   .card-price span{font-size:10px;font-weight:700;}
   .card-row{display:flex;align-items:flex-end;justify-content:space-between;}
@@ -181,7 +181,7 @@ const CSS = `
     box-shadow:0 0 30px rgba(245,197,24,.1);}
   .support-text{flex:1 1 200px;}
   .support-text h3{font-weight:900;font-size:clamp(15px,3.5vw,24px);line-height:1.5;margin-bottom:10px;}
-  .support-text p{color:#4a4a4a;font-size:12.5px;line-height:2;margin-bottom:18px;}
+  .support-text p{color:#888;font-size:12.5px;line-height:2;margin-bottom:18px;}
   .support-btns{display:flex;gap:9px;flex-wrap:wrap;}
 
   /* Features */
@@ -199,14 +199,14 @@ const CSS = `
     border:1px solid rgba(245,197,24,.22);
     display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
   .feat-title{color:#ddd;font-weight:800;font-size:12.5px;margin-bottom:6px;}
-  .feat-body{color:#3d3d3d;font-size:11px;line-height:1.75;}
+  .feat-body{color:#777;font-size:11px;line-height:1.75;}
 
   /* Newsletter */
   .nl{position:relative;overflow:hidden;border-radius:22px;
     background:linear-gradient(145deg,#0f0f0f,#141414);
     border:1px solid rgba(245,197,24,.12);padding:38px 22px;text-align:center;margin-bottom:14px;}
   .nl h3{font-weight:900;font-size:clamp(17px,5vw,26px);margin-bottom:8px;}
-  .nl p{color:#4a4a4a;font-size:12.5px;margin-bottom:22px;max-width:400px;margin-inline:auto;}
+  .nl p{color:#777;font-size:12.5px;margin-bottom:22px;max-width:400px;margin-inline:auto;}
   .nl-form{display:flex;gap:8px;max-width:460px;margin:0 auto;}
   .nl-input{flex:1;min-width:0;background:#080808;border:1px solid rgba(255,255,255,.07);
     border-radius:10px;padding:12px 15px;color:#fff;font-size:12.5px;text-align:right;
@@ -216,8 +216,8 @@ const CSS = `
     border-radius:10px;border:none;cursor:pointer;}
 
   /* Footer */
-  .footer{background:#050505;border-top:1px solid rgba(255,255,255,.05);padding:42px 18px 26px;}
-  .footer-grid{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:30px;}
+  .footer{background:#050505;border-top:1px solid rgba(255,255,255,.05);padding:24px 18px 24px;}
+  .footer-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:24px;}
   .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:18px;
     display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
 
@@ -264,7 +264,8 @@ const CSS = `
 
     .feats{grid-template-columns:repeat(4,1fr);}
     .nl{padding:56px 48px;}
-    .footer-grid{grid-template-columns:repeat(4,1fr);}
+    .footer{padding:48px 24px 28px;}
+    .footer-grid{grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:32px;}
 
     .prod-row{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;}
     .card{min-width:unset;flex:unset;}
@@ -616,7 +617,7 @@ export default function HomePage() {
               {/* Trust note */}
               <div style={{ marginTop: 14, display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
                 {["🔒 لا بريد مزعج", "📧 إلغاء في أي وقت", "🎁 كوبون فوري"].map((t, i) => (
-                  <span key={i} style={{ color: "#333", fontSize: 11, fontWeight: 700 }}>{t}</span>
+                  <span key={i} style={{ color: "#666", fontSize: 11, fontWeight: 700 }}>{t}</span>
                 ))}
               </div>
             </div>
@@ -626,21 +627,21 @@ export default function HomePage() {
         {/* ══ TRUSTED BY BAR ══ */}
         <div style={{ background: "#060606", borderTop: "1px solid rgba(245,197,24,.1)", borderBottom: "1px solid rgba(245,197,24,.1)", padding: "18px 24px" }}>
           <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 32, flexWrap: "wrap" }}>
-            <span style={{ color: "#2a2a2a", fontSize: 11, fontWeight: 800 }}>موثوق من قِبَل:</span>
+            <span style={{ color: "#555", fontSize: 11, fontWeight: 800 }}>موثوق من قِبَل:</span>
             {["+10,000 عميل راضٍ", "★ 4.9 تقييم متوسط", "✓ 100% ضمان مُعتمد", "⚡ تسليم خلال دقائق"].map((t, i) => (
               <React.Fragment key={i}>
-                <span style={{ color: "#3a3a3a", fontSize: 12, fontWeight: 700 }}>{t}</span>
-                {i < 3 && <span style={{ color: "rgba(245,197,24,.2)", fontSize: 16 }}>|</span>}
+                <span style={{ color: "#999", fontSize: 12, fontWeight: 700 }}>{t}</span>
+                {i < 3 && <span style={{ color: "rgba(245,197,24,.3)", fontSize: 16 }}>|</span>}
               </React.Fragment>
             ))}
           </div>
         </div>
 
         {/* ══ FOOTER ══ */}
-        <footer style={{ background: "#050505", padding: "48px 18px 28px" }}>
+        <footer className="footer">
           <div style={{ maxWidth: 1280, margin: "0 auto" }}>
             {/* Top gold divider */}
-            <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(245,197,24,.4),rgba(245,197,24,.4),transparent)", marginBottom: 40 }} />
+            <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(245,197,24,.4),rgba(245,197,24,.4),transparent)", marginBottom: 20 }} />
 
             <div className="footer-grid">
               {/* Brand */}
@@ -648,12 +649,12 @@ export default function HomePage() {
                 <div style={{ marginBottom: 16 }}>
                   <img src="/logo.png" alt="ماكس ستور" style={{ height: 42, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 10px rgba(245,197,24,.45))" }} />
                 </div>
-                <p style={{ color: "#2a2a2a", fontSize: 12, lineHeight: 2 }}>متجرك الأول للاشتراكات الرقمية<br />بأسعار مغرية وضمان ذهبي.</p>
+                <p style={{ color: "#777", fontSize: 12, lineHeight: 2 }}>متجرك الأول للاشتراكات الرقمية<br />بأسعار مغرية وضمان ذهبي.</p>
                 <div style={{ display: "flex", gap: 8, marginTop: 18 }}>
                   {[Instagram, MessageSquare, MessageCircle].map((Icon, i) => (
-                    <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 9, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#2a2a2a", textDecoration: "none", transition: "all .22s" }}
+                    <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 9, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#888", textDecoration: "none", transition: "all .22s" }}
                       onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.35)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.06)"; }}
-                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#2a2a2a"; e.currentTarget.style.background = "#0f0f0f"; }}>
+                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.1)"; e.currentTarget.style.color = "#888"; e.currentTarget.style.background = "#0f0f0f"; }}>
                       <Icon style={{ width: 15, height: 15 }} />
                     </a>
                   ))}
@@ -661,9 +662,9 @@ export default function HomePage() {
                 {/* Mini stats */}
                 <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
                   {[["10k+", "عميل"], ["24/7", "دعم"], ["100%", "ضمان"]].map(([n, l], i) => (
-                    <div key={i} style={{ background: "#0f0f0f", border: "1px solid rgba(245,197,24,.1)", borderRadius: 9, padding: "7px 12px", textAlign: "center" }}>
+                    <div key={i} style={{ background: "#0f0f0f", border: "1px solid rgba(245,197,24,.15)", borderRadius: 9, padding: "7px 12px", textAlign: "center" }}>
                       <div style={{ color: G, fontWeight: 900, fontSize: 13, lineHeight: 1 }}>{n}</div>
-                      <div style={{ color: "#333", fontSize: 9, marginTop: 2 }}>{l}</div>
+                      <div style={{ color: "#777", fontSize: 9, marginTop: 2 }}>{l}</div>
                     </div>
                   ))}
                 </div>
@@ -681,9 +682,9 @@ export default function HomePage() {
                   </div>
                   {col.links.map((l, i) => (
                     <div key={i} style={{ marginBottom: 11 }}>
-                      <a href="#" style={{ color: "#2a2a2a", fontSize: 12.5, textDecoration: "none", fontWeight: 600, transition: "color .2s", display: "flex", alignItems: "center", gap: 6 }}
-                        onMouseOver={e => (e.currentTarget.style.color = "#999")}
-                        onMouseOut={e => (e.currentTarget.style.color = "#2a2a2a")}>
+                      <a href="#" style={{ color: "#888", fontSize: 12.5, textDecoration: "none", fontWeight: 600, transition: "color .2s", display: "flex", alignItems: "center", gap: 6 }}
+                        onMouseOver={e => (e.currentTarget.style.color = G)}
+                        onMouseOut={e => (e.currentTarget.style.color = "#888")}>
                         <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(245,197,24,.3)", flexShrink: 0, display: "inline-block" }} />
                         {l}
                       </a>
@@ -703,7 +704,7 @@ export default function HomePage() {
                   <div style={{ position: "absolute", top: -20, right: -20, width: 80, height: 80, background: "radial-gradient(circle,rgba(245,197,24,.08) 0%,transparent 70%)", pointerEvents: "none" }} />
                   <div style={{ fontSize: 26, marginBottom: 6 }}>🕐</div>
                   <div style={{ color: G, fontWeight: 900, fontSize: 20, lineHeight: 1 }}>24 / 7</div>
-                  <div style={{ color: "#333", fontSize: 10, marginTop: 4 }}>طاقمنا جاهز لخدمتك دائماً</div>
+                  <div style={{ color: "#777", fontSize: 10, marginTop: 4 }}>طاقمنا جاهز لخدمتك دائماً</div>
                   {/* Response time */}
                   <div style={{ marginTop: 10, background: "rgba(74,222,128,.07)", border: "1px solid rgba(74,222,128,.18)", borderRadius: 7, padding: "4px 10px" }}>
                     <span style={{ color: "#4ade80", fontSize: 9.5, fontWeight: 800 }}>⚡ متوسط الرد: 3 دقائق</span>
@@ -712,9 +713,9 @@ export default function HomePage() {
                 {/* Buttons */}
                 <div style={{ display: "flex", gap: 8 }}>
                   {[["واتساب", "💬"], ["تيليجرام", "✈️"]].map(([l, ic], i) => (
-                    <a key={i} href="#" style={{ flex: 1, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.06)", borderRadius: 10, padding: "10px 8px", textAlign: "center", textDecoration: "none", color: "#2a2a2a", fontSize: 11.5, fontWeight: 800, transition: "all .2s", display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}
-                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.3)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.04)"; }}
-                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#2a2a2a"; e.currentTarget.style.background = "#0f0f0f"; }}>
+                    <a key={i} href="#" style={{ flex: 1, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.1)", borderRadius: 10, padding: "10px 8px", textAlign: "center", textDecoration: "none", color: "#999", fontSize: 11.5, fontWeight: 800, transition: "all .2s", display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}
+                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.3)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.06)"; }}
+                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.1)"; e.currentTarget.style.color = "#999"; e.currentTarget.style.background = "#0f0f0f"; }}>
                       <span style={{ fontSize: 16 }}>{ic}</span>
                       <span>{l}</span>
                     </a>
@@ -725,7 +726,7 @@ export default function HomePage() {
 
             {/* Bottom bar */}
             <div style={{ marginTop: 36, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.04)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-              <p style={{ color: "#1c1c1c", fontSize: 11 }}>© 2025 ماكس ستور — جميع الحقوق محفوظة</p>
+              <p style={{ color: "#555", fontSize: 11 }}>© 2025 ماكس ستور — جميع الحقوق محفوظة</p>
               <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                 {[["Apple Pay","#f5f5f5"], ["Visa","#60a5fa"], ["Mastercard","#e05c5c"], ["Mada","#4ade80"]].map(([m, c], i) => (
                   <span key={i} style={{ color: c as string, fontSize: 10, fontWeight: 900, fontStyle: m === "Visa" ? "italic" : "normal" }}>{m}</span>
