@@ -106,8 +106,8 @@ const CSS = `
   .pay-badge{padding:5px 11px;border-radius:8px;background:#080808;
     border:1px solid rgba(255,255,255,.05);font-size:10.5px;font-weight:900;transition:all .2s;}
   .pay-badge:hover{border-color:rgba(245,197,24,.3);transform:translateY(-1px);}
-  .secure{display:flex;align-items:center;gap:5px;background:rgba(74,222,128,.06);
-    border:1px solid rgba(74,222,128,.18);border-radius:8px;padding:5px 10px;white-space:nowrap;}
+  .secure{display:flex;align-items:center;gap:5px;background:rgba(245,197,24,.06);
+    border:1px solid rgba(245,197,24,.2);border-radius:8px;padding:5px 10px;white-space:nowrap;}
 
   /* Marquee */
   .mq-wrap{overflow:hidden;background:#060606;
@@ -511,13 +511,13 @@ export default function HomePage() {
             <div className="pay-inner">
               <span className="pay-label">طرق الدفع:</span>
               <div className="pay-badges">
-                {[["Apple Pay","#f5f5f5"], ["Mastercard","#e05c5c"], ["VISA","#60a5fa"], ["mada","#4ade80"], ["STC Pay","#c084fc"], ["PayPal","#93c5fd"], ["Bitcoin","#f97316"]].map(([l, c], i) => (
-                  <div key={i} className="pay-badge" style={{ color: c as string, fontStyle: l === "VISA" ? "italic" : "normal" }}>{l}</div>
+                {["Apple Pay", "Mastercard", "VISA", "mada", "STC Pay", "PayPal", "Bitcoin"].map((l, i) => (
+                  <div key={i} className="pay-badge" style={{ color: "#ccc", fontStyle: l === "VISA" ? "italic" : "normal" }}>{l}</div>
                 ))}
               </div>
               <div className="secure">
-                <ShieldCheck style={{ width: 12, height: 12, color: "#4ade80" }} />
-                <span style={{ color: "#4ade80", fontSize: 10, fontWeight: 800 }}>دفع مشفّر</span>
+                <ShieldCheck style={{ width: 12, height: 12, color: G }} />
+                <span style={{ color: G, fontSize: 10, fontWeight: 800 }}>دفع مشفّر</span>
               </div>
             </div>
           </div>
@@ -752,11 +752,11 @@ export default function HomePage() {
                   <div style={{ color: G, fontWeight: 900, fontSize: 22, lineHeight: 1, marginBottom: 4 }} dir="ltr">24 / 7</div>
                   <div style={{ color: "#aaa", fontSize: 11, marginBottom: 12 }}>دعم متواصل على مدار الساعة</div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 5,
-                    background: "rgba(74,222,128,.08)", border: "1px solid rgba(74,222,128,.22)",
+                    background: "rgba(245,197,24,.08)", border: "1px solid rgba(245,197,24,.25)",
                     borderRadius: 8, padding: "5px 12px" }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80",
-                      boxShadow: "0 0 6px #4ade80", flexShrink: 0, animation: "pulse-dot 2s ease-in-out infinite" }} />
-                    <span style={{ color: "#4ade80", fontSize: 10.5, fontWeight: 800 }}>متوسط الرد: 3 دقائق</span>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: G,
+                      boxShadow: `0 0 6px ${G}`, flexShrink: 0, animation: "pulse-dot 2s ease-in-out infinite" }} />
+                    <span style={{ color: G, fontSize: 10.5, fontWeight: 800 }}>متوسط الرد: 3 دقائق</span>
                   </div>
                 </div>
 
@@ -780,11 +780,11 @@ export default function HomePage() {
             <div className="footer-bottom">
               {/* Payment methods */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
-                {[["Apple Pay","#ccc"], ["Visa","#60a5fa"], ["Mastercard","#f87171"], ["Mada","#4ade80"], ["STC Pay","#a78bfa"]].map(([m, c], i) => (
+                {["Apple Pay", "Visa", "Mastercard", "Mada", "STC Pay"].map((m, i) => (
                   <span key={i} style={{
-                    color: c as string, fontSize: 10.5, fontWeight: 900,
+                    color: "#bbb", fontSize: 10.5, fontWeight: 900,
                     fontStyle: m === "Visa" ? "italic" : "normal",
-                    background: "#0f0f0f", border: "1px solid rgba(255,255,255,.07)",
+                    background: "#0f0f0f", border: "1px solid rgba(245,197,24,.12)",
                     borderRadius: 7, padding: "4px 10px", letterSpacing: .3 }}>
                     {m}
                   </span>
@@ -909,7 +909,7 @@ function ProductCard({ p, brand }: { p: any; brand: "shahid" | "netflix" }) {
 
         {/* Savings + stock */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ background: "rgba(74,222,128,.08)", color: "#4ade80", fontSize: 9, fontWeight: 800, padding: "2px 7px", borderRadius: 5, border: "1px solid rgba(74,222,128,.18)" }}>
+          <span style={{ background: "rgba(245,197,24,.08)", color: G, fontSize: 9, fontWeight: 800, padding: "2px 7px", borderRadius: 5, border: "1px solid rgba(245,197,24,.22)" }}>
             توفير {p.old} ر.س
           </span>
           <span style={{ color: "#ef4444", fontSize: 9, fontWeight: 700 }}>⚡ متبقي 5</span>
