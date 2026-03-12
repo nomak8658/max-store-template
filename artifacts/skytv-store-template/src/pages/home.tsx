@@ -244,13 +244,11 @@ const CSS = `
     border:1px solid rgba(245,197,24,.15);animation:pulse-ring 2.5s ease-out infinite;}
   .contact-btn{flex:1;border-radius:12px;padding:12px 10px;text-align:center;
     text-decoration:none;font-size:12px;font-weight:800;transition:all .22s;
-    display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid;}
-  .wa-btn{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25);color:#22c55e;}
-  .wa-btn:hover{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.5);
-    box-shadow:0 6px 24px rgba(34,197,94,.15);}
-  .tg-btn{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.25);color:#60a5fa;}
-  .tg-btn:hover{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.5);
-    box-shadow:0 6px 24px rgba(59,130,246,.15);}
+    display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid;
+    background:linear-gradient(135deg,#141414,#0f0f0f);
+    border-color:rgba(245,197,24,.2);color:#ddd;}
+  .contact-btn:hover{background:rgba(245,197,24,.08);border-color:rgba(245,197,24,.45);
+    color:#f5c518;box-shadow:0 6px 24px rgba(245,197,24,.15);}
 
   /* Navbar */
   .navbar{position:sticky;top:0;z-index:200;backdrop-filter:blur(24px);
@@ -764,12 +762,12 @@ export default function HomePage() {
 
                 {/* Branded contact buttons */}
                 <div style={{ display: "flex", gap: 8 }}>
-                  <a href="#" className="contact-btn wa-btn">
+                  <a href="#" className="contact-btn">
                     <span style={{ fontSize: 20 }}>💬</span>
                     <span>واتساب</span>
                     <span style={{ fontSize: 9, opacity: .7 }}>رد فوري</span>
                   </a>
-                  <a href="#" className="contact-btn tg-btn">
+                  <a href="#" className="contact-btn">
                     <span style={{ fontSize: 20 }}>✈️</span>
                     <span>تيليجرام</span>
                     <span style={{ fontSize: 9, opacity: .7 }}>رد فوري</span>
