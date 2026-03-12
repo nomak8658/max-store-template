@@ -55,13 +55,13 @@ export default function HomePage() {
         }
         
         .marquee-content {
-          display: inline-block;
-          animation: marquee 20s linear infinite;
+          display: inline-flex;
+          animation: marquee 18s linear infinite;
         }
         
         @keyframes marquee {
           0% { transform: translateX(0); }
-          100% { transform: translateX(100%); }
+          100% { transform: translateX(-50%); }
         }
       `}} />
       
@@ -152,12 +152,17 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 4. شريط متحرك لشعار M */}
-          <section className="bg-black py-2 overflow-hidden border-y border-[#222] -mx-4 px-4 relative">
+          {/* 4. شريط متحرك */}
+          <section className="bg-black py-3 overflow-hidden border-y border-[#222] -mx-4 relative">
             <div className="marquee-container">
-              <div className="marquee-content flex gap-8">
-                {[...Array(20)].map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-xl font-black">M</span>
+              <div className="marquee-content flex items-center gap-6 whitespace-nowrap">
+                {[...Array(12)].map((_, i) => (
+                  <span key={i} className="flex items-center gap-3 shrink-0">
+                    <img src="/logo.png" alt="M" className="h-6 w-auto object-contain" />
+                    <span className="text-white font-black text-sm tracking-widest uppercase">MAX STORE</span>
+                    <img src="/logo.png" alt="M" className="h-6 w-auto object-contain" />
+                    <span className="text-yellow-400 font-bold mx-2">✦</span>
+                  </span>
                 ))}
               </div>
             </div>
