@@ -84,35 +84,87 @@ export default function HomePage() {
         <main className="p-4 space-y-8 max-w-lg mx-auto sm:max-w-xl md:max-w-3xl lg:max-w-5xl">
           
           {/* 2. HERO BANNER */}
-          <section className="relative overflow-hidden rounded-2xl bg-[#111] p-6 border border-[#222]">
-            {/* Background elements */}
-            <div className="absolute inset-0 opacity-20 diagonal-bg"></div>
-            <div className="absolute -left-10 top-0 w-32 h-full transform -skew-x-12 bg-gradient-to-r from-yellow-500/10 to-transparent"></div>
-            
-            <div className="relative z-10 flex justify-between items-center">
-              <div className="space-y-3 w-2/3">
-                <h1 className="text-3xl font-black text-white flex items-center gap-2">
-                  <img src="/logo.png" alt="MAX" className="h-10 w-auto object-contain inline-block" />
-                  ماكس ستور
-                </h1>
-                <p className="text-lg font-bold">ملاذك المناسب للإشتراكات الرقمية</p>
-                <p className="text-sm text-yellow-400 font-semibold">حسابات رسمية بأسعار مغرية!</p>
-                <button className="mt-2 border border-white/50 bg-transparent text-white rounded-full px-6 py-1.5 text-sm hover:bg-white/10 transition-colors">
-                  تسوق الآن
+          <section className="relative overflow-hidden rounded-2xl bg-[#0d0d0d] border border-[#2a2a2a]" style={{minHeight: '220px'}}>
+            {/* Gold glow top-right */}
+            <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-yellow-500/10 blur-3xl pointer-events-none" />
+            {/* Gold glow bottom-left */}
+            <div className="absolute -bottom-8 -left-8 w-36 h-36 rounded-full bg-yellow-400/8 blur-2xl pointer-events-none" />
+            {/* Diagonal stripe accent */}
+            <div className="absolute inset-0 pointer-events-none" style={{background: 'repeating-linear-gradient(125deg, transparent, transparent 38px, rgba(245,197,24,0.03) 38px, rgba(245,197,24,0.03) 39px)'}} />
+            {/* Gold top border line */}
+            <div className="absolute top-0 right-0 w-1/2 h-[2px] bg-gradient-to-l from-yellow-400/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 w-1/3 h-[2px] bg-gradient-to-r from-yellow-400/40 to-transparent" />
+
+            <div className="relative z-10 flex items-center justify-between p-5 gap-2">
+              {/* Text side */}
+              <div className="flex-1 space-y-2.5">
+                <div className="flex items-center gap-2">
+                  <img src="/logo.png" alt="MAX" className="h-9 w-auto object-contain" />
+                  <h1 className="text-2xl font-black text-white leading-tight">ماكس ستور</h1>
+                </div>
+                <p className="text-sm font-bold text-gray-200 leading-relaxed">
+                  ملاذك المناسب<br/>
+                  <span className="text-white font-black">للإشتراكات الرقمية</span>
+                </p>
+                <p className="text-xs text-yellow-400 font-bold">✦ حسابات رسمية بأسعار مغرية!</p>
+                <button className="mt-1 border border-white/40 bg-white/5 backdrop-blur text-white rounded-full px-5 py-1.5 text-xs font-bold hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-200">
+                  تسوق الآن ←
                 </button>
               </div>
-              
-              <div className="w-1/3 relative h-32">
-                {/* CSS Placeholders for subscriptions */}
-                <div className="absolute top-2 left-0 w-16 h-20 bg-gradient-to-br from-red-600 to-red-900 rounded-lg transform -rotate-12 flex items-center justify-center border border-white/10 shadow-lg z-10">
-                  <span className="text-2xl font-black text-red-500 drop-shadow-md">N</span>
+
+              {/* Cards side — stacked subscription cards */}
+              <div className="relative shrink-0" style={{width: '140px', height: '170px'}}>
+
+                {/* Back card — Disney+ style */}
+                <div className="absolute rounded-xl overflow-hidden border border-white/10 shadow-xl"
+                  style={{width:'88px', height:'118px', top:'8px', right:'0px',
+                    background:'linear-gradient(135deg,#0f1b40 0%,#1a237e 60%,#283593 100%)',
+                    transform:'rotate(14deg)', zIndex:1, boxShadow:'0 8px 24px rgba(0,0,0,0.6)'}}>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                    <span className="text-white font-black text-2xl tracking-tighter" style={{fontStyle:'italic'}}>D+</span>
+                    <span className="text-blue-300 text-[8px] font-bold tracking-widest">DISNEY+</span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
-                <div className="absolute top-8 left-8 w-16 h-20 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-lg transform rotate-6 flex items-center justify-center border border-white/10 shadow-lg">
-                  <span className="text-2xl font-black text-yellow-300 drop-shadow-md">+</span>
+
+                {/* Middle card — Shahid style */}
+                <div className="absolute rounded-xl overflow-hidden border border-white/10 shadow-xl"
+                  style={{width:'92px', height:'122px', top:'24px', right:'24px',
+                    background:'linear-gradient(135deg,#1a0a2e 0%,#6b1fa8 60%,#a855f7 100%)',
+                    transform:'rotate(-6deg)', zIndex:2, boxShadow:'0 10px 28px rgba(0,0,0,0.7)'}}>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-2">
+                    <div className="flex gap-0.5">
+                      {[0,1,2].map(d=>(
+                        <div key={d} className="w-2 h-5 rounded-sm bg-gradient-to-b from-white to-gray-300" style={{opacity: d===1?1:0.7}} />
+                      ))}
+                    </div>
+                    <span className="text-white text-[9px] font-black tracking-widest mt-1">SHAHID</span>
+                    <span className="text-purple-300 text-[7px] font-bold">VIP</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent" />
                 </div>
-                <div className="absolute -top-2 left-12 w-14 h-18 bg-gradient-to-br from-green-500 to-green-700 rounded-lg transform rotate-12 flex items-center justify-center border border-white/10 shadow-lg z-0">
-                  <span className="text-xl font-black text-green-300 drop-shadow-md">X</span>
+
+                {/* Front card — Netflix style */}
+                <div className="absolute rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+                  style={{width:'96px', height:'126px', top:'36px', right:'42px',
+                    background:'linear-gradient(160deg,#1a0000 0%,#8b0000 45%,#b71c1c 100%)',
+                    transform:'rotate(4deg)', zIndex:3, boxShadow:'0 12px 32px rgba(183,28,28,0.4)'}}>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                    <span className="text-white font-black text-4xl leading-none" style={{fontStyle:'italic', letterSpacing:'-2px', textShadow:'2px 2px 8px rgba(0,0,0,0.8)'}}>N</span>
+                    <span className="text-red-300 text-[8px] font-bold tracking-[3px]">NETFLIX</span>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400/60 to-transparent" />
+                  <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-red-400/40 to-transparent" />
+                  {/* Shine */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-transparent" />
                 </div>
+
+                {/* Gold star badge */}
+                <div className="absolute z-10 bg-yellow-400 text-black text-[9px] font-black px-2 py-0.5 rounded-full shadow-lg"
+                  style={{bottom:'12px', right:'4px', transform:'rotate(-4deg)'}}>
+                  ضمان ذهبي ✓
+                </div>
+
               </div>
             </div>
           </section>
