@@ -326,25 +326,76 @@ export default function HomePage() {
             <div className="hero-inner">
               {/* Cards */}
               <div className="hero-cards float">
-                {/* Disney+ */}
-                <div style={{ position: "absolute", width: 118, height: 154, top: 8, right: 0, background: "linear-gradient(135deg,#0f1b40,#283593)", transform: "rotate(15deg)", zIndex: 1, borderRadius: 16, border: "1px solid rgba(255,255,255,.1)", boxShadow: "0 10px 36px rgba(0,0,0,.8)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5 }}>
-                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 24, fontStyle: "italic" }}>D+</span>
-                  <span style={{ color: "#90caf9", fontSize: 8, letterSpacing: 2, fontWeight: 800 }}>DISNEY+</span>
+
+                {/* Disney+ — ذهبي */}
+                <div style={{
+                  position: "absolute", width: 118, height: 154, top: 8, right: 0,
+                  background: "linear-gradient(145deg,#0d0d0d,#181408,#0a0800)",
+                  transform: "rotate(15deg)", zIndex: 1, borderRadius: 16,
+                  border: "1px solid rgba(245,197,24,.28)",
+                  boxShadow: "0 10px 36px rgba(0,0,0,.9),0 0 22px rgba(245,197,24,.1)",
+                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6,
+                  overflow: "hidden",
+                }}>
+                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 30%,rgba(245,197,24,.12) 0%,transparent 65%)", pointerEvents: "none" }} />
+                  <span style={{
+                    color: G, fontWeight: 900, fontSize: 26, fontStyle: "italic",
+                    textShadow: "0 0 18px rgba(245,197,24,.9),0 0 36px rgba(245,197,24,.4)",
+                  }}>D+</span>
+                  <span style={{ color: "#c9a000", fontSize: 8, letterSpacing: 3, fontWeight: 800 }}>DISNEY+</span>
+                  <div style={{ width: 32, height: 1, background: "linear-gradient(to right,transparent,#f5c518,transparent)", marginTop: 2 }} />
                 </div>
-                {/* Shahid */}
-                <div style={{ position: "absolute", width: 124, height: 160, top: 30, right: 34, background: "linear-gradient(135deg,#1a0a2e,#6b21a8)", transform: "rotate(-7deg)", zIndex: 2, borderRadius: 16, border: "1px solid rgba(255,255,255,.12)", boxShadow: "0 12px 40px rgba(0,0,0,.8)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 7 }}>
+
+                {/* Shahid — ذهبي */}
+                <div style={{
+                  position: "absolute", width: 124, height: 160, top: 30, right: 34,
+                  background: "linear-gradient(145deg,#0f0e08,#1a1700,#0a0900)",
+                  transform: "rotate(-7deg)", zIndex: 2, borderRadius: 16,
+                  border: "1px solid rgba(245,197,24,.32)",
+                  boxShadow: "0 12px 40px rgba(0,0,0,.9),0 0 30px rgba(245,197,24,.14)",
+                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8,
+                  overflow: "hidden",
+                }}>
+                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 35%,rgba(245,197,24,.15) 0%,transparent 65%)", pointerEvents: "none" }} />
                   <div style={{ display: "flex", gap: 4, alignItems: "flex-end" }}>
-                    {[18, 27, 18].map((h, i) => <div key={i} style={{ width: 7, height: h, borderRadius: 3, background: GD }} />)}
+                    {[16, 26, 16].map((h, i) => (
+                      <div key={i} style={{ width: 7, height: h, borderRadius: 3, background: GD, boxShadow: "0 0 8px rgba(245,197,24,.6)" }} />
+                    ))}
                   </div>
-                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 10, letterSpacing: 3 }}>SHAHID</span>
-                  <span style={{ color: G, fontSize: 8, fontWeight: 800, letterSpacing: 2 }}>VIP</span>
+                  <span style={{
+                    color: "#fff", fontWeight: 900, fontSize: 10, letterSpacing: 4,
+                    textShadow: "0 0 12px rgba(245,197,24,.5)",
+                  }}>SHAHID</span>
+                  <span style={{
+                    background: "rgba(245,197,24,.15)", color: G, fontWeight: 900,
+                    fontSize: 8, padding: "2px 10px", borderRadius: 999,
+                    border: "1px solid rgba(245,197,24,.35)",
+                    textShadow: "0 0 8px rgba(245,197,24,.6)",
+                  }}>VIP</span>
                 </div>
-                {/* Netflix */}
-                <div style={{ position: "absolute", width: 132, height: 168, top: 48, right: 60, background: "linear-gradient(160deg,#0d0000,#6b0000,#b91c1c)", transform: "rotate(5deg)", zIndex: 3, borderRadius: 16, border: "1px solid rgba(255,100,100,.15)", boxShadow: "0 14px 44px rgba(185,28,28,.55)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 40%,rgba(255,60,60,.15) 0%,transparent 65%)", borderRadius: 16 }} />
-                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 76, fontStyle: "italic", letterSpacing: -5, lineHeight: 1, textShadow: "0 0 40px rgba(220,38,38,1),0 0 70px rgba(220,38,38,.4)" }}>N</span>
-                  <span style={{ color: "#fca5a5", fontSize: 8, letterSpacing: 4, fontWeight: 900, marginTop: -12 }}>NETFLIX</span>
+
+                {/* Netflix — ذهبي */}
+                <div style={{
+                  position: "absolute", width: 132, height: 168, top: 48, right: 60,
+                  background: "linear-gradient(160deg,#0c0b00,#1a1800,#0d0c00)",
+                  transform: "rotate(5deg)", zIndex: 3, borderRadius: 16,
+                  border: "1px solid rgba(245,197,24,.38)",
+                  boxShadow: "0 14px 48px rgba(0,0,0,.95),0 0 40px rgba(245,197,24,.22)",
+                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                  overflow: "hidden",
+                }}>
+                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 40%,rgba(245,197,24,.18) 0%,transparent 60%)", pointerEvents: "none" }} />
+                  <span style={{
+                    color: G, fontWeight: 900, fontSize: 76, fontStyle: "italic",
+                    letterSpacing: -5, lineHeight: 1, position: "relative", zIndex: 1,
+                    textShadow: "0 0 30px rgba(245,197,24,1),0 0 60px rgba(245,197,24,.55),0 0 100px rgba(245,197,24,.25)",
+                  }}>N</span>
+                  <span style={{
+                    color: "#c9a000", fontSize: 8, letterSpacing: 4, fontWeight: 900, marginTop: -12,
+                    textShadow: "0 0 10px rgba(245,197,24,.5)",
+                  }}>NETFLIX</span>
                 </div>
+
                 {/* Badge */}
                 <div className="ring" style={{ position: "absolute", bottom: 14, right: 8, zIndex: 10, background: GD, color: "#000", fontWeight: 900, fontSize: 9, padding: "4px 12px", borderRadius: 999, boxShadow: "0 4px 14px rgba(245,197,24,.6)", transform: "rotate(-5deg)" }}>✓ ضمان ذهبي</div>
               </div>
