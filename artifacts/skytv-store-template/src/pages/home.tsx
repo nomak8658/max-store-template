@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   ShoppingBag, Search, User, Zap, Heart, Headphones,
   Award, Globe, ShieldCheck, Instagram, MessageCircle,
-  MessageSquare, ArrowLeft, Star, Menu, X, Crown, Flame,
+  MessageSquare, ArrowLeft, Star, Menu, X, Flame,
 } from "lucide-react";
 
 const G = "#f5c518";
@@ -275,13 +275,7 @@ export default function HomePage() {
           style={{ background: scrolled ? "rgba(8,8,8,.97)" : "rgba(8,8,8,.85)" }}>
           <div className="nav-inner">
             <a className="nav-logo" href="#">
-              <div style={{ width: 36, height: 36, borderRadius: 9, background: GD, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 14px rgba(245,197,24,.4)" }}>
-                <Crown style={{ width: 18, height: 18, color: "#000" }} />
-              </div>
-              <div>
-                <div style={{ color: "#fff", fontWeight: 900, fontSize: 15, lineHeight: 1.1 }}>ماكس ستور</div>
-                <div style={{ color: G, fontSize: 8, fontWeight: 700, letterSpacing: 2 }}>MAX STORE</div>
-              </div>
+              <img src="/logo.png" alt="ماكس ستور" style={{ height: 40, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 8px rgba(245,197,24,.5))" }} />
             </a>
 
             <nav className="nav-links">
@@ -467,7 +461,7 @@ export default function HomePage() {
             <div className="mq-inner" style={{ gap: 36 }}>
               {Array.from({ length: 18 }, (_, i) => (
                 <span key={i} style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-                  <Crown style={{ width: 13, height: 13, color: G }} />
+                  <span style={{ color: G, fontSize: 13 }}>♛</span>
                   <span style={{ color: "#fff", fontWeight: 900, fontSize: 11, letterSpacing: 4 }}>MAX STORE</span>
                   <span style={{ color: G, fontSize: 9 }}>✦</span>
                   <span style={{ color: "#444", fontWeight: 700, fontSize: 10, letterSpacing: 2 }}>PREMIUM</span>
@@ -552,14 +546,8 @@ export default function HomePage() {
             <div className="footer-grid">
               {/* Brand */}
               <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 9, background: GD, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Crown style={{ width: 18, height: 18, color: "#000" }} />
-                  </div>
-                  <div>
-                    <div style={{ color: "#fff", fontWeight: 900, fontSize: 15 }}>ماكس ستور</div>
-                    <div style={{ color: G, fontSize: 8, fontWeight: 700, letterSpacing: 2 }}>MAX STORE</div>
-                  </div>
+                <div style={{ marginBottom: 14 }}>
+                  <img src="/logo.png" alt="ماكس ستور" style={{ height: 38, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 6px rgba(245,197,24,.4))" }} />
                 </div>
                 <p style={{ color: "#3a3a3a", fontSize: 12, lineHeight: 1.85 }}>متجرك الأول للاشتراكات الرقمية بأسعار مغرية وضمان ذهبي.</p>
                 <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
