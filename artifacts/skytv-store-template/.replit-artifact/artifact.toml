@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "قالب متجر رقمي"
+version = "1.0.0"
+id = "artifacts/skytv-store-template"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 21811
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/skytv-store-template run dev"
+
+[services.env]
+PORT = "21811"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/skytv-store-template", "run", "build"]
+publicDir = "artifacts/skytv-store-template/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
