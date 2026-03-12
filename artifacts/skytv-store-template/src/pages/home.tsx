@@ -34,6 +34,7 @@ const CSS = `
   @keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
   @keyframes gradient-shift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%};} 
   @keyframes counter{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulse-dot{0%,100%{box-shadow:0 0 6px 2px rgba(245,197,24,.7),0 0 14px 4px rgba(245,197,24,.35);}50%{box-shadow:0 0 10px 4px rgba(245,197,24,1),0 0 24px 8px rgba(245,197,24,.55);}}
 
   .fade-up{animation:fadeUp .6s cubic-bezier(.22,1,.36,1) forwards;}
   .mq-inner{display:inline-flex;animation:mq 28s linear infinite;}
@@ -448,10 +449,16 @@ export default function HomePage() {
                   </button>
                 </div>
                 <div className="hero-trust">
-                  {[["✅", "ضمان ذهبي"], ["⚡", "تسليم فوري"], ["🔒", "دفع آمن"]].map(([ic, lb], i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ fontSize: 14 }}>{ic}</span>
-                      <span style={{ color: "#4a4a4a", fontSize: 11.5, fontWeight: 700 }}>{lb}</span>
+                  {["ضمان ذهبي", "تسليم فوري", "دفع آمن"].map((lb, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                      <span style={{
+                        display: "inline-block", width: 8, height: 8, borderRadius: "50%",
+                        background: GD,
+                        boxShadow: "0 0 6px 2px rgba(245,197,24,.7), 0 0 14px 4px rgba(245,197,24,.35)",
+                        flexShrink: 0,
+                        animation: `pulse-dot ${1.8 + i * 0.4}s ease-in-out infinite`,
+                      }} />
+                      <span style={{ color: "#888", fontSize: 12, fontWeight: 700 }}>{lb}</span>
                     </div>
                   ))}
                 </div>
