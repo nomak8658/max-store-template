@@ -77,8 +77,7 @@ export default function HomePage() {
             <Search className="w-5 h-5 text-gray-300" />
           </div>
           <div className="flex items-center gap-2">
-            <Crown className="w-5 h-5 text-[#f5c518] fill-[#f5c518]" />
-            <span className="font-black text-xl tracking-tight">MAX</span>
+            <img src="/logo-m.jpeg" alt="MAX Logo" className="h-9 w-9 object-contain" />
           </div>
         </header>
 
@@ -93,7 +92,7 @@ export default function HomePage() {
             <div className="relative z-10 flex justify-between items-center">
               <div className="space-y-3 w-2/3">
                 <h1 className="text-3xl font-black text-white flex items-center gap-2">
-                  <span className="text-[#f5c518] text-4xl">M</span>
+                  <img src="/logo-m.jpeg" alt="MAX" className="h-10 w-10 object-contain" />
                   ماكس ستور
                 </h1>
                 <p className="text-lg font-bold">ملاذك المناسب للإشتراكات الرقمية</p>
@@ -168,7 +167,7 @@ export default function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2 relative">
-                <span className="text-[#f5c518] text-xl font-black">M</span>
+                <img src="/logo-m.jpeg" alt="M" className="h-7 w-7 object-contain" />
                 <h3 className="text-white font-bold text-lg">اشتراكات شاهد VIP</h3>
                 <div className="absolute -bottom-1 right-8 w-1/2 border-b-2 border-yellow-400"></div>
               </div>
@@ -234,7 +233,7 @@ export default function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2 relative">
-                <span className="text-[#f5c518] text-xl font-black">M</span>
+                <img src="/logo-m.jpeg" alt="M" className="h-7 w-7 object-contain" />
                 <h3 className="text-white font-bold text-lg">اشتراكات نتفليكس</h3>
                 <div className="absolute -bottom-1 right-8 w-1/2 border-b-2 border-red-600"></div>
               </div>
@@ -302,7 +301,9 @@ export default function HomePage() {
                   <button className="border border-white/30 bg-transparent text-white rounded-full text-sm px-6 py-2 hover:bg-white/10 transition-colors">
                     اضغط هنا للتواصل معنا
                   </button>
-                  <div className="mt-3 text-[#f5c518] text-xl font-black">M</div>
+                  <div className="mt-3">
+                    <img src="/logo-m.jpeg" alt="M" className="h-8 w-8 object-contain" />
+                  </div>
                 </div>
              </div>
              <div className="w-1/3 relative flex justify-center items-center z-10">
@@ -315,10 +316,9 @@ export default function HomePage() {
 
           {/* 8. ماذا يميزنا (2×2 grid) */}
           <section className="py-4">
-             <div className="text-center mb-8 flex flex-col items-center">
-                <h3 className="text-2xl font-bold text-white mb-1">❓ ماذا يميزنا عن غيرنا؟</h3>
-                <div className="text-[#f5c518] text-2xl font-black my-2">M</div>
-                <p className="text-gray-400 text-sm">عالم المنتجات الرقمية</p>
+             {/* Features banner image */}
+             <div className="rounded-2xl overflow-hidden mb-6">
+               <img src="/features-banner.png" alt="ماذا يميزنا عن غيرنا" className="w-full object-cover" />
              </div>
 
              <div className="grid grid-cols-2 gap-4">
@@ -385,7 +385,9 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <div className="text-[#f5c518] text-5xl font-black mb-8 opacity-80">M</div>
+              <div className="mb-8">
+                <img src="/logo-m.jpeg" alt="MAX Logo" className="h-16 w-16 object-contain opacity-90" />
+              </div>
 
               <div className="w-full flex flex-col items-center text-center mb-8 gap-2">
                  <h4 className="text-yellow-400 font-bold mb-2">روابط تهمك</h4>
