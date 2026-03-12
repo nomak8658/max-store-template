@@ -56,7 +56,15 @@ const CSS = `
 
   /* ══ CARD HOVER ══ */
   .pc{transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease;}
-  .pc:hover{transform:translateY(-9px) scale(1.01);box-shadow:0 24px 60px rgba(245,197,24,.22)!important;}
+  .pc:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 28px 60px rgba(245,197,24,.24)!important;}
+  .pc:hover .card-img-overlay{opacity:1;}
+  .card-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(245,197,24,.05),transparent 40%);
+    opacity:0;transition:opacity .3s;pointer-events:none;z-index:15;}
+
+  @keyframes img-shimmer{0%{transform:translateX(-120%);}100%{transform:translateX(120%)}}
+  .card-img::after{content:'';position:absolute;top:0;left:0;width:40%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(245,197,24,.06),transparent);
+    animation:img-shimmer 4s ease-in-out infinite;pointer-events:none;z-index:5;}
 
   .fc{transition:transform .2s,border-color .2s,box-shadow .2s;}
   .fc:hover{transform:translateY(-5px);border-color:rgba(245,197,24,.4)!important;
@@ -519,6 +527,15 @@ export default function HomePage() {
               <div className="support-text">
                 <h3>طاقم ماكس جاهز<br /><span style={{ color: G }}>على مدار الساعة</span></h3>
                 <p>تحت أي سماء وفوق أي أرض، طاقم ماكس حاضر لخدمتك في أي وقت كان.</p>
+                {/* Support stats row */}
+                <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
+                  {[["⚡ 3 دقائق", "متوسط وقت الرد"], ["⭐ 4.9 / 5", "تقييم رضا العملاء"], ["✅ 99%", "معدل حل المشاكل"]].map(([val, lbl], i) => (
+                    <div key={i} style={{ background: "rgba(245,197,24,.05)", border: "1px solid rgba(245,197,24,.12)", borderRadius: 10, padding: "9px 14px", flex: "1 1 auto" }}>
+                      <div style={{ color: G, fontWeight: 900, fontSize: 13 }}>{val}</div>
+                      <div style={{ color: "#333", fontSize: 9.5, marginTop: 2 }}>{lbl}</div>
+                    </div>
+                  ))}
+                </div>
                 <div className="support-btns">
                   <button className="btn-gold" style={{ background: GD, color: "#000", fontWeight: 900, fontSize: 12.5, padding: "10px 22px", borderRadius: 10, border: "none", boxShadow: "0 6px 20px rgba(245,197,24,.38)" }}>💬 تواصل الآن</button>
                   {["واتساب", "تيليجرام"].map((l, i) => (
@@ -534,107 +551,183 @@ export default function HomePage() {
           {/* ══ WHY US ══ */}
           <section style={{ marginBottom: 14 }}>
             <div style={{ marginBottom: 22 }}>
-              <h3 style={{ color: "#fff", fontWeight: 900, fontSize: "clamp(17px,4.5vw,24px)", display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ color: G }}>✦</span> ماذا يميّزنا؟
-              </h3>
-              <p style={{ color: "#333", fontSize: 11.5, marginTop: 4 }}>نقدم لك أفضل تجربة تسوق رقمي في المملكة</p>
-              <div style={{ marginTop: 9, height: 2, width: 52, borderRadius: 2, background: GD2 }} />
+              {/* WHY US header */}
+              <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 22 }}>
+                <div style={{ flex: 1, height: 1, background: "linear-gradient(to left,rgba(245,197,24,.25),transparent)" }} />
+                <h3 style={{ color: "#fff", fontWeight: 900, fontSize: "clamp(16px,4vw,22px)", whiteSpace: "nowrap" }}>
+                  <span style={{ color: G }}>✦</span> ماذا يميّزنا؟ <span style={{ color: G }}>✦</span>
+                </h3>
+                <div style={{ flex: 1, height: 1, background: "linear-gradient(to right,rgba(245,197,24,.25),transparent)" }} />
+              </div>
+              <p style={{ color: "#333", fontSize: 12, textAlign: "center", marginBottom: 20 }}>نقدم لك أفضل تجربة تسوق رقمي في المملكة</p>
             </div>
             <div className="feats">
               {[
-                { icon: <Award style={{ width: 22, height: 22, color: G }} />, title: "ضمان ماكس الذهبي", body: "تعويض فوري وكامل طوال فترة الاشتراك." },
-                { icon: <Headphones style={{ width: 22, height: 22, color: G }} />, title: "دعم لا يتوقف", body: "فريق دعم متواجد 24 ساعة، 7 أيام." },
-                { icon: <Globe style={{ width: 22, height: 22, color: G }} />, title: "جميع طرق الدفع", body: "Apple Pay, Visa, Mada, STC Pay والمزيد." },
-                { icon: <ShieldCheck style={{ width: 22, height: 22, color: G }} />, title: "أمان وخصوصية", body: "تشفير عالي المستوى في كل معاملة." },
+                { num: "01", icon: <Award style={{ width: 24, height: 24, color: G }} />, title: "ضمان ماكس الذهبي", body: "تعويض فوري وكامل طوال فترة الاشتراك بدون أسئلة." },
+                { num: "02", icon: <Headphones style={{ width: 24, height: 24, color: G }} />, title: "دعم لا يتوقف", body: "فريق دعم متواجد 24 ساعة، 7 أيام في الأسبوع." },
+                { num: "03", icon: <Globe style={{ width: 24, height: 24, color: G }} />, title: "جميع طرق الدفع", body: "Apple Pay, Visa, Mada, STC Pay والمزيد." },
+                { num: "04", icon: <ShieldCheck style={{ width: 24, height: 24, color: G }} />, title: "أمان وخصوصية", body: "تشفير عالي المستوى في كل معاملة مالية." },
               ].map((f, i) => (
-                <div key={i} className="feat">
+                <div key={i} className="feat" style={{ cursor: "default" }}>
+                  {/* Decorative number */}
+                  <div style={{ position: "absolute", top: 12, left: 14, fontWeight: 900, fontSize: 32, color: "rgba(245,197,24,.06)", lineHeight: 1, fontStyle: "italic", userSelect: "none" }}>{f.num}</div>
+                  {/* Accent line */}
+                  <div style={{ position: "absolute", top: 0, right: 0, left: 0, height: 2, background: `linear-gradient(to left,${GD2},transparent)`, borderRadius: "18px 18px 0 0", opacity: 0.6 }} />
                   <div className="feat-icon">{f.icon}</div>
                   <div className="feat-title">{f.title}</div>
                   <div className="feat-body">{f.body}</div>
+                  {/* Bottom gold dot */}
+                  <div style={{ position: "absolute", bottom: 14, left: 14, width: 6, height: 6, borderRadius: "50%", background: GD, boxShadow: "0 0 8px rgba(245,197,24,.5)" }} />
                 </div>
               ))}
             </div>
           </section>
 
           {/* ══ NEWSLETTER ══ */}
-          <section className="nl">
-            <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 400, height: 160, background: "radial-gradient(ellipse,rgba(245,197,24,.07) 0%,transparent 68%)", pointerEvents: "none" }} />
-            <div style={{ position: "absolute", top: 0, left: "30%", right: "30%", height: 1, background: "linear-gradient(to right,transparent,rgba(245,197,24,.4),transparent)" }} />
+          <section className="nl" style={{ overflow: "hidden" }}>
+            {/* Corner decorations */}
+            <div style={{ position: "absolute", top: 0, right: 0, width: 120, height: 120, pointerEvents: "none" }}>
+              <div style={{ position: "absolute", top: 0, right: 0, width: "100%", height: 2, background: "linear-gradient(to left,rgba(245,197,24,.5),transparent)" }} />
+              <div style={{ position: "absolute", top: 0, right: 0, width: 2, height: "100%", background: "linear-gradient(to bottom,rgba(245,197,24,.5),transparent)" }} />
+            </div>
+            <div style={{ position: "absolute", bottom: 0, left: 0, width: 120, height: 120, pointerEvents: "none" }}>
+              <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: 2, background: "linear-gradient(to right,rgba(245,197,24,.5),transparent)" }} />
+              <div style={{ position: "absolute", bottom: 0, left: 0, width: 2, height: "100%", background: "linear-gradient(to top,rgba(245,197,24,.5),transparent)" }} />
+            </div>
+            <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 200, background: "radial-gradient(ellipse,rgba(245,197,24,.08) 0%,transparent 65%)", pointerEvents: "none" }} />
+
             <div style={{ position: "relative", zIndex: 1 }}>
-              <div style={{ fontSize: 38, marginBottom: 10 }}>🔔</div>
-              <h3>كن أول من يعرف!</h3>
-              <p>اشترك بنشرتنا وكن أول من يحصل على أفضل العروض الحصرية.</p>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(245,197,24,.09)", border: "1px solid rgba(245,197,24,.2)", borderRadius: 999, padding: "5px 14px", marginBottom: 18 }}>
+                <Star style={{ width: 11, height: 11, color: G, fill: G }} />
+                <span style={{ color: G, fontSize: 11, fontWeight: 800 }}>عروض حصرية للمشتركين</span>
+              </div>
+              <h3 style={{ marginBottom: 10 }}>كن أول من يعرف!</h3>
+              <p>اشترك في نشرتنا البريدية واحصل على كوبون خصم 10% على أول طلب.</p>
               <div className="nl-form">
                 <input className="nl-input" type="email" placeholder="أدخل بريدك الإلكتروني..." />
-                <button className="btn-gold nl-btn" style={{ background: GD, color: "#000", fontWeight: 900 }}>اشترك</button>
+                <button className="btn-gold nl-btn" style={{ background: GD, color: "#000", fontWeight: 900 }}>🎁 اشترك</button>
+              </div>
+              {/* Trust note */}
+              <div style={{ marginTop: 14, display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+                {["🔒 لا بريد مزعج", "📧 إلغاء في أي وقت", "🎁 كوبون فوري"].map((t, i) => (
+                  <span key={i} style={{ color: "#333", fontSize: 11, fontWeight: 700 }}>{t}</span>
+                ))}
               </div>
             </div>
           </section>
         </div>
 
+        {/* ══ TRUSTED BY BAR ══ */}
+        <div style={{ background: "#060606", borderTop: "1px solid rgba(245,197,24,.1)", borderBottom: "1px solid rgba(245,197,24,.1)", padding: "18px 24px" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 32, flexWrap: "wrap" }}>
+            <span style={{ color: "#2a2a2a", fontSize: 11, fontWeight: 800 }}>موثوق من قِبَل:</span>
+            {["+10,000 عميل راضٍ", "★ 4.9 تقييم متوسط", "✓ 100% ضمان مُعتمد", "⚡ تسليم خلال دقائق"].map((t, i) => (
+              <React.Fragment key={i}>
+                <span style={{ color: "#3a3a3a", fontSize: 12, fontWeight: 700 }}>{t}</span>
+                {i < 3 && <span style={{ color: "rgba(245,197,24,.2)", fontSize: 16 }}>|</span>}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
         {/* ══ FOOTER ══ */}
-        <footer className="footer">
+        <footer style={{ background: "#050505", padding: "48px 18px 28px" }}>
           <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-            <div style={{ position: "relative", marginBottom: 32 }}>
-              <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(245,197,24,.3),transparent)", marginBottom: 32 }} />
-            </div>
+            {/* Top gold divider */}
+            <div style={{ height: 1, background: "linear-gradient(to right,transparent,rgba(245,197,24,.4),rgba(245,197,24,.4),transparent)", marginBottom: 40 }} />
+
             <div className="footer-grid">
+              {/* Brand */}
               <div>
-                <div style={{ marginBottom: 14 }}>
-                  <img src="/logo.png" alt="ماكس ستور" style={{ height: 40, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 8px rgba(245,197,24,.4))" }} />
+                <div style={{ marginBottom: 16 }}>
+                  <img src="/logo.png" alt="ماكس ستور" style={{ height: 42, width: "auto", objectFit: "contain", filter: "drop-shadow(0 0 10px rgba(245,197,24,.45))" }} />
                 </div>
-                <p style={{ color: "#2e2e2e", fontSize: 12, lineHeight: 1.9 }}>متجرك الأول للاشتراكات الرقمية بأسعار مغرية وضمان ذهبي.</p>
-                <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
+                <p style={{ color: "#2a2a2a", fontSize: 12, lineHeight: 2 }}>متجرك الأول للاشتراكات الرقمية<br />بأسعار مغرية وضمان ذهبي.</p>
+                <div style={{ display: "flex", gap: 8, marginTop: 18 }}>
                   {[Instagram, MessageSquare, MessageCircle].map((Icon, i) => (
-                    <a key={i} href="#" style={{ width: 34, height: 34, borderRadius: 9, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#333", textDecoration: "none", transition: "all .2s" }}
-                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.32)"; e.currentTarget.style.color = G; }}
-                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#333"; }}>
-                      <Icon style={{ width: 14, height: 14 }} />
+                    <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 9, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#2a2a2a", textDecoration: "none", transition: "all .22s" }}
+                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.35)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.06)"; }}
+                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#2a2a2a"; e.currentTarget.style.background = "#0f0f0f"; }}>
+                      <Icon style={{ width: 15, height: 15 }} />
                     </a>
                   ))}
                 </div>
+                {/* Mini stats */}
+                <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
+                  {[["10k+", "عميل"], ["24/7", "دعم"], ["100%", "ضمان"]].map(([n, l], i) => (
+                    <div key={i} style={{ background: "#0f0f0f", border: "1px solid rgba(245,197,24,.1)", borderRadius: 9, padding: "7px 12px", textAlign: "center" }}>
+                      <div style={{ color: G, fontWeight: 900, fontSize: 13, lineHeight: 1 }}>{n}</div>
+                      <div style={{ color: "#333", fontSize: 9, marginTop: 2 }}>{l}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* Quick links */}
               {[
-                { h: "روابط مهمة", links: ["الرئيسية", "شاهد VIP", "نتفليكس", "ديزني+", "جميع المنتجات"] },
-                { h: "الدعم والمساعدة", links: ["الشروط والأحكام", "سياسة الاسترجاع", "الأسئلة الشائعة", "اتصل بنا"] },
+                { h: "روابط سريعة", links: ["الرئيسية", "شاهد VIP", "نتفليكس", "ديزني+", "جميع المنتجات"] },
+                { h: "الدعم", links: ["الشروط والأحكام", "سياسة الاسترجاع", "الأسئلة الشائعة", "اتصل بنا"] },
               ].map((col, ci) => (
                 <div key={ci}>
-                  <h4 style={{ color: G, fontWeight: 800, fontSize: 12.5, marginBottom: 16 }}>{col.h}</h4>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18 }}>
+                    <div style={{ width: 3, height: 16, borderRadius: 2, background: GD }} />
+                    <h4 style={{ color: "#fff", fontWeight: 800, fontSize: 13 }}>{col.h}</h4>
+                  </div>
                   {col.links.map((l, i) => (
-                    <div key={i} style={{ marginBottom: 10 }}>
-                      <a href="#" style={{ color: "#2e2e2e", fontSize: 12, textDecoration: "none", fontWeight: 600, transition: "color .2s" }}
-                        onMouseOver={e => (e.currentTarget.style.color = "#aaa")}
-                        onMouseOut={e => (e.currentTarget.style.color = "#2e2e2e")}>{l}</a>
+                    <div key={i} style={{ marginBottom: 11 }}>
+                      <a href="#" style={{ color: "#2a2a2a", fontSize: 12.5, textDecoration: "none", fontWeight: 600, transition: "color .2s", display: "flex", alignItems: "center", gap: 6 }}
+                        onMouseOver={e => (e.currentTarget.style.color = "#999")}
+                        onMouseOut={e => (e.currentTarget.style.color = "#2a2a2a")}>
+                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(245,197,24,.3)", flexShrink: 0, display: "inline-block" }} />
+                        {l}
+                      </a>
                     </div>
                   ))}
                 </div>
               ))}
+
+              {/* Contact */}
               <div>
-                <h4 style={{ color: G, fontWeight: 800, fontSize: 12.5, marginBottom: 16 }}>خدمة العملاء</h4>
-                <div style={{ background: "#0f0f0f", border: "1px solid rgba(245,197,24,.12)", borderRadius: 12, padding: 16, marginBottom: 10, textAlign: "center" }}>
-                  <div style={{ fontSize: 24, marginBottom: 5 }}>⏰</div>
-                  <div style={{ color: G, fontWeight: 900, fontSize: 18 }}>24/7</div>
-                  <div style={{ color: "#333", fontSize: 10, marginTop: 3 }}>متاح دائماً لخدمتك</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18 }}>
+                  <div style={{ width: 3, height: 16, borderRadius: 2, background: GD }} />
+                  <h4 style={{ color: "#fff", fontWeight: 800, fontSize: 13 }}>تواصل معنا</h4>
                 </div>
-                <div style={{ display: "flex", gap: 7 }}>
-                  {["واتساب", "تيليجرام"].map((l, i) => (
-                    <a key={i} href="#" style={{ flex: 1, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.06)", borderRadius: 9, padding: "9px", textAlign: "center", textDecoration: "none", color: "#333", fontSize: 11, fontWeight: 700, transition: "all .2s" }}
-                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.28)"; e.currentTarget.style.color = G; }}
-                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#333"; }}>{l}</a>
+                {/* 24/7 card */}
+                <div style={{ background: "linear-gradient(135deg,#111,#0f0f0f)", border: "1px solid rgba(245,197,24,.15)", borderRadius: 14, padding: "16px 14px", marginBottom: 12, textAlign: "center", position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", top: -20, right: -20, width: 80, height: 80, background: "radial-gradient(circle,rgba(245,197,24,.08) 0%,transparent 70%)", pointerEvents: "none" }} />
+                  <div style={{ fontSize: 26, marginBottom: 6 }}>🕐</div>
+                  <div style={{ color: G, fontWeight: 900, fontSize: 20, lineHeight: 1 }}>24 / 7</div>
+                  <div style={{ color: "#333", fontSize: 10, marginTop: 4 }}>طاقمنا جاهز لخدمتك دائماً</div>
+                  {/* Response time */}
+                  <div style={{ marginTop: 10, background: "rgba(74,222,128,.07)", border: "1px solid rgba(74,222,128,.18)", borderRadius: 7, padding: "4px 10px" }}>
+                    <span style={{ color: "#4ade80", fontSize: 9.5, fontWeight: 800 }}>⚡ متوسط الرد: 3 دقائق</span>
+                  </div>
+                </div>
+                {/* Buttons */}
+                <div style={{ display: "flex", gap: 8 }}>
+                  {[["واتساب", "💬"], ["تيليجرام", "✈️"]].map(([l, ic], i) => (
+                    <a key={i} href="#" style={{ flex: 1, background: "#0f0f0f", border: "1px solid rgba(255,255,255,.06)", borderRadius: 10, padding: "10px 8px", textAlign: "center", textDecoration: "none", color: "#2a2a2a", fontSize: 11.5, fontWeight: 800, transition: "all .2s", display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}
+                      onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(245,197,24,.3)"; e.currentTarget.style.color = G; e.currentTarget.style.background = "rgba(245,197,24,.04)"; }}
+                      onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#2a2a2a"; e.currentTarget.style.background = "#0f0f0f"; }}>
+                      <span style={{ fontSize: 16 }}>{ic}</span>
+                      <span>{l}</span>
+                    </a>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="footer-bottom">
-              <p style={{ color: "#1e1e1e", fontSize: 10.5 }}>© 2025 ماكس ستور</p>
-              <div style={{ display: "flex", gap: 10 }}>
-                {["Apple Pay","Visa","Mastercard","Mada"].map((m, i) => (
-                  <span key={i} style={{ color: "#1e1e1e", fontSize: 10, fontWeight: 700 }}>{m}</span>
+
+            {/* Bottom bar */}
+            <div style={{ marginTop: 36, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.04)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+              <p style={{ color: "#1c1c1c", fontSize: 11 }}>© 2025 ماكس ستور — جميع الحقوق محفوظة</p>
+              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                {[["Apple Pay","#f5f5f5"], ["Visa","#60a5fa"], ["Mastercard","#e05c5c"], ["Mada","#4ade80"]].map(([m, c], i) => (
+                  <span key={i} style={{ color: c as string, fontSize: 10, fontWeight: 900, fontStyle: m === "Visa" ? "italic" : "normal" }}>{m}</span>
                 ))}
               </div>
-              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ background: "none", border: "none", cursor: "pointer", color: "#222", fontSize: 11, fontWeight: 700, transition: "color .2s" }}
-                onMouseOver={e => (e.currentTarget.style.color = G)}
-                onMouseOut={e => (e.currentTarget.style.color = "#222")}>↑ للأعلى</button>
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="btn-gold" style={{ background: GD, color: "#000", fontWeight: 900, fontSize: 11, padding: "6px 14px", borderRadius: 8, border: "none", boxShadow: "0 3px 12px rgba(245,197,24,.3)" }}>
+                ↑ للأعلى
+              </button>
             </div>
           </div>
         </footer>
@@ -643,93 +736,120 @@ export default function HomePage() {
   );
 }
 
-function ProdSection({ title, desc, icon, accent, products, render }: any) {
+function ProdSection({ title, desc, icon, products, render }: any) {
   return (
-    <section style={{ marginBottom: 36 }}>
-      <div className="sec-hd">
-        <div>
-          <h3 className="sec-title">{icon} {title}</h3>
-          <p className="sec-desc">{desc}</p>
-          <div className="sec-accent" />
+    <section style={{ marginBottom: 44 }}>
+      {/* Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 24 }}>
+        <div style={{ position: "relative" }}>
+          {/* Gold left bar */}
+          <div style={{ position: "absolute", right: "100%", top: "50%", transform: "translateY(-50%)", marginRight: 10, width: 4, height: 36, borderRadius: 2, background: GD, boxShadow: "0 0 12px rgba(245,197,24,.6)" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
+            <span style={{ fontSize: 18 }}>{icon}</span>
+            <h3 style={{ fontSize: "clamp(18px,4.5vw,26px)", fontWeight: 900, color: "#fff" }}>{title}</h3>
+          </div>
+          <p style={{ color: "#333", fontSize: 12, marginBottom: 8 }}>{desc}</p>
+          <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+            <div style={{ height: 2, width: 40, borderRadius: 2, background: GD }} />
+            <div style={{ height: 2, width: 16, borderRadius: 2, background: "rgba(245,197,24,.3)" }} />
+            <div style={{ height: 2, width: 8, borderRadius: 2, background: "rgba(245,197,24,.15)" }} />
+          </div>
         </div>
-        <a href="#" className="sec-all"><ArrowLeft style={{ width: 12, height: 12 }} />عرض الكل</a>
+        <a href="#" style={{ display: "flex", alignItems: "center", gap: 6, color: G, fontSize: 12.5, fontWeight: 700, textDecoration: "none", padding: "8px 16px", borderRadius: 10, border: "1px solid rgba(245,197,24,.22)", background: "rgba(245,197,24,.04)", transition: "all .2s", whiteSpace: "nowrap" }}
+          onMouseOver={e => { e.currentTarget.style.background = "rgba(245,197,24,.12)"; e.currentTarget.style.borderColor = "rgba(245,197,24,.4)"; e.currentTarget.style.boxShadow = "0 4px 18px rgba(245,197,24,.15)"; }}
+          onMouseOut={e => { e.currentTarget.style.background = "rgba(245,197,24,.04)"; e.currentTarget.style.borderColor = "rgba(245,197,24,.22)"; e.currentTarget.style.boxShadow = "none"; }}>
+          <ArrowLeft style={{ width: 12, height: 12 }} /> عرض الكل
+        </a>
       </div>
       <div className="prod-row">{products.map((p: any, i: number) => render(p, i))}</div>
     </section>
   );
 }
 
-function ShahidCard({ p }: { p: any }) {
+function ProductCard({ p, brand }: { p: any; brand: "shahid" | "netflix" }) {
   const sport = p.name.includes("رياضة");
+  const isNetflix = brand === "netflix";
+
+  const imgBg = isNetflix
+    ? "linear-gradient(160deg,#0b0a00,#1c1a00,#0d0c00)"
+    : "linear-gradient(160deg,#0c0a00,#1d1900,#271f00)";
+  const centerGlow = isNetflix
+    ? "radial-gradient(ellipse at 50% 60%,rgba(245,197,24,.28) 0%,transparent 58%)"
+    : "radial-gradient(ellipse at 50% 72%,rgba(245,197,24,.26) 0%,transparent 58%)";
+
   return (
     <div className="card pc">
-      <div className="card-img" style={{ background: "linear-gradient(160deg,#0c0a00,#1c1700,#251e00)" }}>
-        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 75%,rgba(245,197,24,.24) 0%,transparent 60%)" }} />
-        <div style={{ position: "absolute", inset: 0, opacity: .035, backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize: "10px 10px" }} />
-        <div className="badge-gld" style={{ background: GD }}>ضمان ذهبي</div>
-        {p.hot ? <div className="badge-hot"><Flame style={{ width: 9, height: 9 }} />الأكثر مبيعاً</div>
-          : <div className="badge-disc">{sport ? "SPORTS" : "VIP"}</div>}
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, zIndex: 10 }}>
-          <div style={{ display: "flex", gap: 4, alignItems: "flex-end" }}>
-            {[15, 24, 15].map((h, i) => <div key={i} style={{ width: 7, height: h, borderRadius: 3, background: GD, boxShadow: "0 0 8px rgba(245,197,24,.5)" }} />)}
+      {/* Image zone */}
+      <div className="card-img" style={{ background: imgBg }}>
+        {/* Glow */}
+        <div style={{ position: "absolute", inset: 0, background: centerGlow, pointerEvents: "none" }} />
+        {/* Hatch pattern */}
+        <div style={{ position: "absolute", inset: 0, opacity: .03, backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize: "11px 11px", pointerEvents: "none" }} />
+        {/* Hover overlay */}
+        <div className="card-img-overlay" />
+
+        {/* Top badges */}
+        <div style={{ position: "absolute", top: 0, right: 0, background: GD, color: "#000", fontWeight: 900, fontSize: 8, padding: "4px 9px", borderRadius: "0 0 0 9px", zIndex: 20 }}>✓ ضمان</div>
+        {p.hot
+          ? <div style={{ position: "absolute", top: 8, left: 8, display: "flex", alignItems: "center", gap: 3, background: "rgba(239,68,68,.14)", border: "1px solid rgba(239,68,68,.3)", color: "#ef4444", fontWeight: 900, fontSize: 7.5, padding: "3px 7px", borderRadius: 6, zIndex: 20 }}><Flame style={{ width: 8, height: 8 }} />الأكثر مبيعاً</div>
+          : <div style={{ position: "absolute", top: 8, left: 8, background: "#ef4444", color: "#fff", fontWeight: 900, fontSize: 7.5, padding: "3px 7px", borderRadius: 6, zIndex: 20 }}>{sport ? "SPORTS" : "VIP"}</div>
+        }
+
+        {/* Center logo */}
+        {isNetflix ? (
+          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", zIndex: 10 }}>
+            <span style={{ color: G, fontWeight: 900, fontSize: 84, fontStyle: "italic", letterSpacing: -6, lineHeight: 1, textShadow: "0 0 30px rgba(245,197,24,1),0 0 60px rgba(245,197,24,.55),0 0 100px rgba(245,197,24,.22)" }}>N</span>
+            <span style={{ color: "#8a6d00", fontSize: 7.5, letterSpacing: 4, fontWeight: 900, marginTop: -14 }}>NETFLIX</span>
           </div>
-          <span style={{ color: "#fff", fontWeight: 900, fontSize: 11, letterSpacing: 4, textShadow: "0 0 10px rgba(245,197,24,.4)" }}>SHAHID</span>
-          <span style={{ background: "rgba(245,197,24,.14)", color: G, fontSize: 8, fontWeight: 900, padding: "2px 9px", borderRadius: 999, border: "1px solid rgba(245,197,24,.28)" }}>{sport ? "SPORTS" : "VIP"}</span>
-        </div>
-        <div className="chips">
-          <span className="chip-g"><Zap style={{ width: 7, height: 7, fill: G }} />4K</span>
-          <span className="chip-d">{p.sub}</span>
+        ) : (
+          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, zIndex: 10 }}>
+            <div style={{ display: "flex", gap: 4, alignItems: "flex-end" }}>
+              {[15, 24, 15].map((h, i) => <div key={i} style={{ width: 7, height: h, borderRadius: 3, background: GD, boxShadow: "0 0 10px rgba(245,197,24,.55)" }} />)}
+            </div>
+            <span style={{ color: "#fff", fontWeight: 900, fontSize: 10.5, letterSpacing: 5, textShadow: "0 0 12px rgba(245,197,24,.5)" }}>SHAHID</span>
+            <span style={{ background: "rgba(245,197,24,.13)", color: G, fontSize: 7.5, fontWeight: 900, padding: "2px 9px", borderRadius: 999, border: "1px solid rgba(245,197,24,.28)" }}>{sport ? "SPORTS" : "VIP"}</span>
+          </div>
+        )}
+
+        {/* Bottom chips */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top,rgba(0,0,0,.96),transparent)", padding: "10px 8px 7px", display: "flex", gap: 4, justifyContent: "center", zIndex: 20 }}>
+          <span style={{ display: "flex", alignItems: "center", gap: 3, background: "rgba(245,197,24,.14)", color: G, fontWeight: 800, fontSize: 7.5, padding: "3px 7px", borderRadius: 5, border: "1px solid rgba(245,197,24,.22)" }}><Zap style={{ width: 7, height: 7, fill: G }} />4K</span>
+          <span style={{ background: "rgba(255,255,255,.05)", color: "#555", fontWeight: 700, fontSize: 7.5, padding: "3px 7px", borderRadius: 5 }}>{p.sub}</span>
         </div>
       </div>
-      <div className="card-info">
-        <div className="card-name">{p.name}</div>
-        <div className="card-row">
+
+      {/* Info zone */}
+      <div style={{ padding: "13px 13px 15px", display: "flex", flexDirection: "column", gap: 9, flex: 1, borderTop: "1px solid rgba(255,255,255,.06)" }}>
+        <div style={{ color: "#c0c0c0", fontWeight: 800, fontSize: 11.5, lineHeight: 1.5 }}>{p.name}</div>
+
+        {/* Price row */}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
           <div>
-            <div className="card-old">{p.old} ر.س</div>
-            <div className="card-price">{p.price} <span>ر.س</span></div>
+            <div style={{ color: "#282828", fontSize: 9, textDecoration: "line-through", marginBottom: 1 }}>{p.old} ر.س</div>
+            <div style={{ color: G, fontWeight: 900, fontSize: 21, lineHeight: 1 }}>
+              {p.price} <span style={{ fontSize: 10, fontWeight: 700 }}>ر.س</span>
+            </div>
           </div>
-          <button style={{ background: "none", border: "none", cursor: "pointer", color: "#252525", transition: "color .2s" }}
-            onMouseOver={e => (e.currentTarget.style.color = "#ef4444")} onMouseOut={e => (e.currentTarget.style.color = "#252525")}>
-            <Heart style={{ width: 14, height: 14 }} />
+          <button style={{ background: "none", border: "none", cursor: "pointer", color: "#222", transition: "color .2s" }}
+            onMouseOver={e => (e.currentTarget.style.color = "#ef4444")} onMouseOut={e => (e.currentTarget.style.color = "#222")}>
+            <Heart style={{ width: 15, height: 15 }} />
           </button>
         </div>
-        <button className="card-btn btn-gold" style={{ background: GD, color: "#000", boxShadow: "0 4px 14px rgba(245,197,24,.32)" }}>🛒 أضف للسلة</button>
+
+        {/* Savings + stock */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ background: "rgba(74,222,128,.08)", color: "#4ade80", fontSize: 9, fontWeight: 800, padding: "2px 7px", borderRadius: 5, border: "1px solid rgba(74,222,128,.18)" }}>
+            توفير {p.old} ر.س
+          </span>
+          <span style={{ color: "#ef4444", fontSize: 9, fontWeight: 700 }}>⚡ متبقي 5</span>
+        </div>
+
+        <button className="btn-gold" style={{ width: "100%", background: GD, color: "#000", fontWeight: 900, fontSize: 11.5, padding: "9px", borderRadius: 10, border: "none", boxShadow: "0 5px 16px rgba(245,197,24,.35)" }}>🛒 أضف للسلة</button>
       </div>
     </div>
   );
 }
 
-function NetflixCard({ p }: { p: any }) {
-  return (
-    <div className="card pc">
-      <div className="card-img" style={{ background: "linear-gradient(160deg,#0b0a00,#1a1900,#0c0b00)" }}>
-        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 65%,rgba(245,197,24,.26) 0%,transparent 62%)" }} />
-        <div style={{ position: "absolute", inset: 0, opacity: .035, backgroundImage: "repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%)", backgroundSize: "12px 12px" }} />
-        <div className="badge-gld" style={{ background: GD }}>ضمان ذهبي</div>
-        {p.hot && <div className="badge-hot"><Flame style={{ width: 9, height: 9 }} />الأكثر مبيعاً</div>}
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", zIndex: 10 }}>
-          <span style={{ color: G, fontWeight: 900, fontSize: 82, fontStyle: "italic", letterSpacing: -6, lineHeight: 1, textShadow: "0 0 30px rgba(245,197,24,1),0 0 60px rgba(245,197,24,.55),0 0 100px rgba(245,197,24,.2)" }}>N</span>
-          <span style={{ color: "#9a7c00", fontSize: 8, letterSpacing: 4, fontWeight: 900, marginTop: -14 }}>NETFLIX</span>
-        </div>
-        <div className="chips">
-          <span className="chip-g"><Zap style={{ width: 7, height: 7, fill: G }} />4K</span>
-          <span className="chip-d">{p.sub}</span>
-        </div>
-      </div>
-      <div className="card-info">
-        <div className="card-name">{p.name}</div>
-        <div className="card-row">
-          <div>
-            <div className="card-old">{p.old} ر.س</div>
-            <div className="card-price">{p.price} <span>ر.س</span></div>
-          </div>
-          <button style={{ background: "none", border: "none", cursor: "pointer", color: "#252525", transition: "color .2s" }}
-            onMouseOver={e => (e.currentTarget.style.color = "#ef4444")} onMouseOut={e => (e.currentTarget.style.color = "#252525")}>
-            <Heart style={{ width: 14, height: 14 }} />
-          </button>
-        </div>
-        <button className="card-btn btn-gold" style={{ background: GD, color: "#000", boxShadow: "0 4px 14px rgba(245,197,24,.32)" }}>🛒 أضف للسلة</button>
-      </div>
-    </div>
-  );
-}
+/* keep old names for backward compat */
+function ShahidCard({ p }: { p: any }) { return <ProductCard p={p} brand="shahid" />; }
+function NetflixCard({ p }: { p: any }) { return <ProductCard p={p} brand="netflix" />; }
