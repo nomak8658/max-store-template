@@ -502,13 +502,13 @@ export default function HomePage() {
           </div>
 
           {/* ══ SHAHID ══ */}
-          <ProdSection title="اشتراكات شاهد VIP" desc="حسابات شاهد الرسمية بأفضل الأسعار وضمان ذهبي" icon="📺"
-            accent="#f5c518" products={shahidProducts}
+          <ProdSection title="اشتراكات شاهد VIP" desc="حسابات شاهد الرسمية بأفضل الأسعار وضمان ذهبي"
+            products={shahidProducts}
             render={(p: any, i: number) => <ShahidCard key={i} p={p} />} />
 
           {/* ══ NETFLIX ══ */}
-          <ProdSection title="اشتراكات نتفليكس" desc="احصل على نتفليكس بسعر أقل مع ضمان ماكس" icon="🎬"
-            accent="#f5c518" products={netflixProducts}
+          <ProdSection title="اشتراكات نتفليكس" desc="احصل على نتفليكس بسعر أقل مع ضمان ماكس"
+            products={netflixProducts}
             render={(p: any, i: number) => <NetflixCard key={i} p={p} />} />
 
           {/* ══ SUPPORT ══ */}
@@ -736,19 +736,16 @@ export default function HomePage() {
   );
 }
 
-function ProdSection({ title, desc, icon, products, render }: any) {
+function ProdSection({ title, desc, products, render }: any) {
   return (
     <section style={{ marginBottom: 44 }}>
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 24 }}>
-        <div style={{ position: "relative" }}>
-          {/* Gold left bar */}
-          <div style={{ position: "absolute", right: "100%", top: "50%", transform: "translateY(-50%)", marginRight: 10, width: 4, height: 36, borderRadius: 2, background: GD, boxShadow: "0 0 12px rgba(245,197,24,.6)" }} />
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
-            <span style={{ fontSize: 18 }}>{icon}</span>
-            <h3 style={{ fontSize: "clamp(18px,4.5vw,26px)", fontWeight: 900, color: "#fff" }}>{title}</h3>
-          </div>
-          <p style={{ color: "#333", fontSize: 12, marginBottom: 8 }}>{desc}</p>
+        <div style={{ position: "relative", paddingRight: 14 }}>
+          {/* Gold right bar */}
+          <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 4, borderRadius: 2, background: GD, boxShadow: "0 0 14px rgba(245,197,24,.55)" }} />
+          <h3 style={{ fontSize: "clamp(19px,4.5vw,27px)", fontWeight: 900, color: "#fff", marginBottom: 6 }}>{title}</h3>
+          <p style={{ color: "#777", fontSize: 12.5, marginBottom: 8 }}>{desc}</p>
           <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
             <div style={{ height: 2, width: 40, borderRadius: 2, background: GD }} />
             <div style={{ height: 2, width: 16, borderRadius: 2, background: "rgba(245,197,24,.3)" }} />
