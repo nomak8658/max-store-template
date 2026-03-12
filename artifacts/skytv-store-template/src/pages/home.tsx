@@ -65,7 +65,7 @@ export default function HomePage() {
         }
       `}} />
       
-      <div dir="rtl" className="min-h-screen bg-[#0d0d0d] text-white font-cairo pb-20">
+      <div dir="rtl" className="min-h-screen bg-[#1c1d1f] text-white font-cairo pb-20">
         
         {/* 1. NAVBAR */}
         <header className="sticky top-0 z-50 bg-[#111111] border-b border-[#222] h-14 flex items-center justify-between px-4">
@@ -77,7 +77,7 @@ export default function HomePage() {
             <Search className="w-5 h-5 text-gray-300" />
           </div>
           <div className="flex items-center gap-2">
-            <Crown className="w-5 h-5 text-[#f5c518] fill-[#f5c518]" />
+            <Crown className="w-5 h-5 text-[#e5ad18] fill-[#e5ad18]" />
             <span className="font-black text-xl tracking-tight">MAX</span>
           </div>
         </header>
@@ -93,11 +93,11 @@ export default function HomePage() {
             <div className="relative z-10 flex justify-between items-center">
               <div className="space-y-3 w-2/3">
                 <h1 className="text-3xl font-black text-white flex items-center gap-2">
-                  <span className="text-[#f5c518] text-4xl">M</span>
+                  <span className="text-[#e5ad18] text-4xl">M</span>
                   ماكس ستور
                 </h1>
                 <p className="text-lg font-bold">ملاذك المناسب للإشتراكات الرقمية</p>
-                <p className="text-sm text-yellow-400 font-semibold">حسابات رسمية بأسعار مغرية!</p>
+                <p className="text-sm text-[#e5ad18] font-semibold">حسابات رسمية بأسعار مغرية!</p>
                 <button className="mt-2 border border-white/50 bg-transparent text-white rounded-full px-6 py-1.5 text-sm hover:bg-white/10 transition-colors">
                   تسوق الآن
                 </button>
@@ -120,7 +120,7 @@ export default function HomePage() {
 
           {/* 3. شريط وسائل الدفع */}
           <section className="bg-[#111] rounded-xl p-4 border border-[#222]">
-            <h2 className="text-center text-sm font-bold mb-4">نوفر لك <span className="text-yellow-400">[ طرق الدفع ]</span> العالمية والمحلية</h2>
+            <h2 className="text-center text-sm font-bold mb-4">نوفر لك <span className="text-[#e5ad18]">[ طرق الدفع ]</span> العالمية والمحلية</h2>
             <div className="space-y-2">
               <div className="flex justify-center gap-2 flex-wrap">
                 <div className="px-2 py-1 bg-black rounded border border-gray-800 text-xs font-bold flex items-center gap-1">
@@ -158,7 +158,7 @@ export default function HomePage() {
             <div className="marquee-container">
               <div className="marquee-content flex gap-8">
                 {[...Array(20)].map((_, i) => (
-                  <span key={i} className="text-[#f5c518] text-xl font-black">M</span>
+                  <span key={i} className="text-[#e5ad18] text-xl font-black">M</span>
                 ))}
               </div>
             </div>
@@ -168,11 +168,11 @@ export default function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2 relative">
-                <span className="text-[#f5c518] text-xl font-black">M</span>
+                <span className="text-[#e5ad18] text-xl font-black">M</span>
                 <h3 className="text-white font-bold text-lg">اشتراكات شاهد VIP</h3>
-                <div className="absolute -bottom-1 right-8 w-1/2 border-b-2 border-yellow-400"></div>
+                <div className="absolute -bottom-1 right-8 w-1/2 border-b-2 border-[#e5ad18]"></div>
               </div>
-              <button className="text-yellow-400 text-sm flex items-center gap-1 hover:underline">
+              <button className="text-[#e5ad18] text-sm flex items-center gap-1 hover:underline">
                 <ArrowLeft className="w-3 h-3" />
                 عرض الكل
               </button>
@@ -184,14 +184,14 @@ export default function HomePage() {
                 { name: "اشتراك شاهد رياضة شهر", oldPrice: "٣٣", newPrice: "١٥.٩٩" },
                 { name: "شاهد VIP 3 أشهر", oldPrice: "٨٠", newPrice: "٣٥" }
               ].map((product, i) => (
-                <div key={i} className="w-40 shrink-0 bg-[#111] rounded-xl overflow-hidden border border-[#222] snap-start flex flex-col group hover:border-[#f5c518]/50 transition-colors">
+                <div key={i} className="w-40 shrink-0 bg-[#111] rounded-xl overflow-hidden border border-[#222] snap-start flex flex-col group hover:border-[#e5ad18]/50 transition-colors">
                   <div className="h-48 relative bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] flex flex-col items-center justify-center p-2">
                     {/* Badge Golden */}
-                    <div className="absolute top-0 left-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-br-xl font-bold z-10">
+                    <div className="absolute top-0 left-0 bg-[#e5ad18] text-black text-[10px] px-2 py-0.5 rounded-br-xl font-bold z-10">
                       ضمان ذهبي
                     </div>
                     {/* Badge Account Type */}
-                    <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-bl-xl font-bold z-10">
+                    <div className="absolute top-0 right-0 bg-[#e5ad18] text-black text-[10px] px-2 py-0.5 rounded-bl-xl font-bold z-10">
                       ملف خاص
                     </div>
                     
@@ -203,7 +203,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="absolute bottom-2 flex gap-1 justify-center w-full px-2">
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5 flex items-center gap-0.5"><Zap className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 4K</span>
+                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5 flex items-center gap-0.5"><Zap className="w-3 h-3 text-[#e5ad18] fill-[#e5ad18]" /> 4K</span>
                       <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">شهر</span>
                       <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">رسمي</span>
                     </div>
@@ -214,7 +214,7 @@ export default function HomePage() {
                       <div className="flex justify-between items-end mb-2">
                         <div className="flex flex-col">
                           <span className="line-through text-gray-500 text-xs">{product.oldPrice} ر.س</span>
-                          <span className="text-yellow-400 font-bold text-base">{product.newPrice} ر.س</span>
+                          <span className="text-[#e5ad18] font-bold text-base">{product.newPrice} ر.س</span>
                         </div>
                         <button className="text-gray-400 hover:text-red-400 transition-colors">
                           <Heart className="w-5 h-5" />
@@ -234,11 +234,11 @@ export default function HomePage() {
           <section>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2 relative">
-                <span className="text-[#f5c518] text-xl font-black">M</span>
+                <span className="text-[#e5ad18] text-xl font-black">M</span>
                 <h3 className="text-white font-bold text-lg">اشتراكات نتفليكس</h3>
                 <div className="absolute -bottom-1 right-8 w-1/2 border-b-2 border-red-600"></div>
               </div>
-              <button className="text-yellow-400 text-sm flex items-center gap-1 hover:underline">
+              <button className="text-[#e5ad18] text-sm flex items-center gap-1 hover:underline">
                 <ArrowLeft className="w-3 h-3" />
                 عرض الكل
               </button>
@@ -250,12 +250,12 @@ export default function HomePage() {
                 { name: "اشتراك نتفليكس شهر مشترك رسمي 4K", oldPrice: "١٧", newPrice: "١١", type: "مشترك", time: "شهر" },
                 { name: "نتفليكس 3 أشهر ملف خاص", oldPrice: "١٠٠", newPrice: "٥٠", type: "ملف خاص", time: "3 أشهر" }
               ].map((product, i) => (
-                <div key={i} className="w-40 shrink-0 bg-[#111] rounded-xl overflow-hidden border border-[#222] snap-start flex flex-col group hover:border-[#f5c518]/50 transition-colors">
+                <div key={i} className="w-40 shrink-0 bg-[#111] rounded-xl overflow-hidden border border-[#222] snap-start flex flex-col group hover:border-[#e5ad18]/50 transition-colors">
                   <div className="h-48 relative bg-gradient-to-b from-[#1a0505] to-[#0a0a0a] flex flex-col items-center justify-center p-2">
-                    <div className="absolute top-0 left-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-br-xl font-bold z-10">
+                    <div className="absolute top-0 left-0 bg-[#e5ad18] text-black text-[10px] px-2 py-0.5 rounded-br-xl font-bold z-10">
                       ضمان ذهبي
                     </div>
-                    <div className="absolute top-0 right-0 bg-yellow-500 text-black text-[10px] px-2 py-0.5 rounded-bl-xl font-bold z-10">
+                    <div className="absolute top-0 right-0 bg-[#e5ad18] text-black text-[10px] px-2 py-0.5 rounded-bl-xl font-bold z-10">
                       {product.type}
                     </div>
                     
@@ -266,7 +266,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="absolute bottom-2 flex gap-1 justify-center w-full px-2">
-                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5 flex items-center gap-0.5"><Zap className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 4K</span>
+                      <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5 flex items-center gap-0.5"><Zap className="w-3 h-3 text-[#e5ad18] fill-[#e5ad18]" /> 4K</span>
                       <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">{product.time}</span>
                       <span className="bg-[#222] text-xs text-gray-300 rounded px-1.5 py-0.5">رسمي</span>
                     </div>
@@ -277,7 +277,7 @@ export default function HomePage() {
                       <div className="flex justify-between items-end mb-2">
                         <div className="flex flex-col">
                           <span className="line-through text-gray-500 text-xs">{product.oldPrice} ر.س</span>
-                          <span className="text-yellow-400 font-bold text-base">{product.newPrice} ر.س</span>
+                          <span className="text-[#e5ad18] font-bold text-base">{product.newPrice} ر.س</span>
                         </div>
                         <button className="text-gray-400 hover:text-red-400 transition-colors">
                           <Heart className="w-5 h-5" />
@@ -302,13 +302,13 @@ export default function HomePage() {
                   <button className="border border-white/30 bg-transparent text-white rounded-full text-sm px-6 py-2 hover:bg-white/10 transition-colors">
                     اضغط هنا للتواصل معنا
                   </button>
-                  <div className="mt-3 text-[#f5c518] text-xl font-black">M</div>
+                  <div className="mt-3 text-[#e5ad18] text-xl font-black">M</div>
                 </div>
              </div>
              <div className="w-1/3 relative flex justify-center items-center z-10">
-                <div className="w-24 h-24 rounded-full border-4 border-yellow-500/20 flex items-center justify-center relative bg-[#1a1a1a]">
-                   <Headphones className="w-12 h-12 text-[#f5c518]" />
-                   <div className="absolute -bottom-2 -right-2 bg-yellow-500 text-black font-black text-xs px-2 py-1 rounded-full">24</div>
+                <div className="w-24 h-24 rounded-full border-4 border-[#e5ad18]/20 flex items-center justify-center relative bg-[#1a1a1a]">
+                   <Headphones className="w-12 h-12 text-[#e5ad18]" />
+                   <div className="absolute -bottom-2 -right-2 bg-[#e5ad18] text-black font-black text-xs px-2 py-1 rounded-full">24</div>
                 </div>
              </div>
           </section>
@@ -317,13 +317,13 @@ export default function HomePage() {
           <section className="py-4">
              <div className="text-center mb-8 flex flex-col items-center">
                 <h3 className="text-2xl font-bold text-white mb-1">❓ ماذا يميزنا عن غيرنا؟</h3>
-                <div className="text-[#f5c518] text-2xl font-black my-2">M</div>
+                <div className="text-[#e5ad18] text-2xl font-black my-2">M</div>
                 <p className="text-gray-400 text-sm">عالم المنتجات الرقمية</p>
              </div>
 
              <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col items-center text-center p-4 border border-[#222] rounded-xl hover:bg-[#111] transition-colors">
-                   <Award className="w-10 h-10 text-[#f5c518] mb-3" />
+                   <Award className="w-10 h-10 text-[#e5ad18] mb-3" />
                    <h4 className="font-bold text-white text-sm mb-1">ضمان «ماكس» الذهبي</h4>
                    <p className="text-xs text-gray-500">تعويض فوري طوال فترة الاشتراك لضمان حقك.</p>
                 </div>
@@ -333,7 +333,7 @@ export default function HomePage() {
                    <p className="text-xs text-gray-500">فريق دعم فني متواجد على مدار الساعة لخدمتك.</p>
                 </div>
                 <div className="flex flex-col items-center text-center p-4 border border-[#222] rounded-xl hover:bg-[#111] transition-colors">
-                   <Globe className="w-10 h-10 text-[#f5c518] mb-3" />
+                   <Globe className="w-10 h-10 text-[#e5ad18] mb-3" />
                    <h4 className="font-bold text-white text-sm mb-1">ادفع وانت مرتاح</h4>
                    <p className="text-[10px] text-gray-500">Apple Pay, Visa, Mastercard, Mada, STC Pay</p>
                 </div>
@@ -377,7 +377,7 @@ export default function HomePage() {
                 <a href="#" className="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
                   <span className="font-bold text-lg">X</span>
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-gray-400 hover:text-[#f5c518] hover:border-[#f5c518] transition-all">
+                <a href="#" className="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-gray-400 hover:text-[#e5ad18] hover:border-[#e5ad18] transition-all">
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-all">
@@ -385,16 +385,16 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <div className="text-[#f5c518] text-5xl font-black mb-8 opacity-80">M</div>
+              <div className="text-[#e5ad18] text-5xl font-black mb-8 opacity-80">M</div>
 
               <div className="w-full flex flex-col items-center text-center mb-8 gap-2">
-                 <h4 className="text-yellow-400 font-bold mb-2">روابط تهمك</h4>
+                 <h4 className="text-[#e5ad18] font-bold mb-2">روابط تهمك</h4>
                  <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">الشروط والأحكام</a>
                  <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">الاسترجاع والاستبدال</a>
               </div>
 
               <div className="w-full flex flex-col items-center text-center mb-8">
-                 <h4 className="text-yellow-400 font-bold mb-4">خدمة العملاء</h4>
+                 <h4 className="text-[#e5ad18] font-bold mb-4">خدمة العملاء</h4>
                  <div className="flex gap-3">
                     <a href="#" className="bg-[#111] p-3 rounded-xl border border-[#222] text-gray-400 hover:text-blue-400 transition-colors">
                       <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
