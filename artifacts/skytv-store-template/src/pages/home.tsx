@@ -20,7 +20,7 @@ const CSS = `
   ::-webkit-scrollbar-thumb:hover{background:#f5c518;}
 
   /* ══ KEYFRAMES ══ */
-  @keyframes mq{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  @keyframes mq{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
   @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);}33%{transform:translateY(-10px) rotate(1deg);}66%{transform:translateY(-5px) rotate(-1deg);}}
   @keyframes pulse-ring{0%{transform:scale(1);opacity:.6;}70%{transform:scale(1.5);opacity:0;}100%{opacity:0;}}
@@ -37,8 +37,9 @@ const CSS = `
   @keyframes pulse-dot{0%,100%{box-shadow:0 0 6px 2px rgba(245,197,24,.7),0 0 14px 4px rgba(245,197,24,.35);}50%{box-shadow:0 0 10px 4px rgba(245,197,24,1),0 0 24px 8px rgba(245,197,24,.55);}}
 
   .fade-up{animation:fadeUp .6s cubic-bezier(.22,1,.36,1) forwards;}
-  .mq-inner{display:inline-flex;animation:mq 28s linear infinite;}
-  .mq-inner:hover{animation-play-state:paused;}
+  .mq-track{display:flex;width:max-content;}
+  .mq-set{display:inline-flex;flex-shrink:0;will-change:transform;animation:mq 26s linear infinite;}
+  .mq-set:nth-child(2){animation-delay:-13s;}
 
   /* ══ SHIMMER BUTTON ══ */
   .btn-gold{position:relative;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;}
@@ -493,15 +494,19 @@ export default function HomePage() {
           {/* ══ MARQUEE ══ */}
           <div className="mq-wrap">
             <div className="mq-fade" />
-            <div className="mq-inner" style={{ gap: 40 }}>
-              {Array.from({ length: 20 }, (_, i) => (
-                <span key={i} style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
-                  <span style={{ color: G, fontSize: 12 }}>♛</span>
-                  <span style={{ color: "#ddd", fontWeight: 900, fontSize: 10.5, letterSpacing: 4 }}>MAX STORE</span>
-                  <span style={{ color: G, fontSize: 8 }}>✦</span>
-                  <span style={{ color: "#333", fontWeight: 700, fontSize: 9.5, letterSpacing: 2 }}>PREMIUM</span>
-                  <span style={{ color: G, fontSize: 8 }}>✦</span>
-                </span>
+            <div className="mq-track">
+              {[0, 1].map(set => (
+                <div key={set} className="mq-set" style={{ gap: 48 }}>
+                  {Array.from({ length: 10 }, (_, i) => (
+                    <span key={i} style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+                      <span style={{ color: G, fontSize: 12 }}>♛</span>
+                      <span style={{ color: "#ddd", fontWeight: 900, fontSize: 10.5, letterSpacing: 4 }}>MAX STORE</span>
+                      <span style={{ color: G, fontSize: 8 }}>✦</span>
+                      <span style={{ color: "#333", fontWeight: 700, fontSize: 9.5, letterSpacing: 2 }}>PREMIUM</span>
+                      <span style={{ color: G, fontSize: 8 }}>✦</span>
+                    </span>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
