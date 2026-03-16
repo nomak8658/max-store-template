@@ -140,105 +140,164 @@ button[type="submit"]:not(.btn-outline) {
 
 /* ========================================
    PRODUCT CARDS
+   — use #app (ID selector) to guarantee we beat ar.css/.main-container-wrapper
    ======================================== */
-.product-card,
-.product-box {
-    background-color: var(--max-card) !important;
-    border: 1px solid var(--max-border) !important;
+
+/* ── Outer wrappers ── */
+#app .product-box,
+#app .product-card,
+.main-container-wrapper .product-box,
+.main-container-wrapper .product-card,
+.product-box,
+.product-card {
+    background-color: #111111 !important;
+    border: 1px solid #2a2a2a !important;
     border-radius: 12px !important;
     overflow: hidden !important;
+    box-shadow: none !important;
     transition: transform 0.2s, box-shadow 0.2s !important;
 }
 
-.product-card:hover,
-.product-box:hover {
+#app .product-card:hover,
+.main-container-wrapper .product-card:hover {
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 30px rgba(245, 197, 24, 0.15) !important;
-    border-color: var(--max-gold) !important;
+    box-shadow: 0 8px 30px rgba(245, 197, 24, 0.18) !important;
+    border-color: #f5c518 !important;
 }
 
+/* ── Image area ── */
+#app .product-card .product-image,
+.main-container-wrapper .product-card .product-image,
 .product-image {
     background-color: #1a1a1a !important;
+    border-bottom: 1px solid #2a2a2a !important;
     position: relative !important;
 }
 
+#app .product-card .product-image img,
+.main-container-wrapper .product-card .product-image img,
 .product-image img {
     width: 100% !important;
     object-fit: cover !important;
+    background-color: #1a1a1a !important;
 }
 
+/* ── Name / info section ── */
+#app .product-card .product-information,
+#app .product-card .product-name,
+#app .product-card .product-details,
+.main-container-wrapper .product-card .product-information,
+.main-container-wrapper .product-card .product-name,
+.main-container-wrapper .product-card .product-details,
 .product-information,
 .product-name,
 .product-details {
-    background-color: var(--max-card) !important;
-    color: var(--max-text) !important;
+    background-color: #111111 !important;
+    color: #ffffff !important;
     padding: 8px 12px !important;
 }
 
+#app .product-card .product-name span,
+#app .product-card .product-name a,
+.main-container-wrapper .product-card .product-name span,
+.main-container-wrapper .product-card .product-name a,
 .product-name span,
 .product-name a {
-    color: var(--max-text) !important;
+    color: #ffffff !important;
+    background-color: transparent !important;
     font-weight: 600 !important;
     font-size: 0.9rem !important;
 }
 
+/* ── Bottom row (price + cart) ── */
+#app .product-card .product-bottom-row,
+.main-container-wrapper .product-card .product-bottom-row,
 .product-bottom-row {
-    background-color: var(--max-card) !important;
+    background-color: #111111 !important;
     padding: 8px 12px !important;
-    border-top: 1px solid var(--max-border) !important;
+    border-top: 1px solid #2a2a2a !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    height: auto !important;
 }
 
-/* Price */
+/* ── Inline price HTML injected by platform ── */
+#app .product-card .product-bottom-row *,
+.main-container-wrapper .product-card .product-bottom-row > div,
+.main-container-wrapper .product-card .product-bottom-row > span {
+    background-color: transparent !important;
+}
+
+/* ── Price ── */
+#app .product-card .product-price,
+.main-container-wrapper .product-card .product-price,
 .price,
 .product-price,
 .price-value {
-    color: var(--max-gold) !important;
+    color: #f5c518 !important;
     font-weight: 700 !important;
     font-size: 1rem !important;
+    background-color: transparent !important;
 }
 
 .old-price,
 .price-before,
 del, s {
-    color: var(--max-text-muted) !important;
+    color: #aaaaaa !important;
     text-decoration: line-through !important;
     font-size: 0.8rem !important;
 }
 
-/* Sticker / Badge */
+/* ── Sticker / Badge ── */
+#app .product-card .sticker,
+#app .product-card .sticker.new,
+#app .product-card .card-promo,
+.main-container-wrapper .product-card .sticker,
+.main-container-wrapper .product-card .sticker.new,
 .sticker,
 .sticker.new,
 .card-promo {
-    background-color: var(--max-gold) !important;
-    color: #000 !important;
+    background-color: #f5c518 !important;
+    color: #000000 !important;
     font-weight: 700 !important;
     font-size: 0.7rem !important;
     padding: 3px 8px !important;
     border-radius: 4px !important;
 }
 
-/* Discount sticker */
 .sticker.discount {
-    background-color: #e00 !important;
-    color: #fff !important;
+    background-color: #cc0000 !important;
+    color: #ffffff !important;
 }
 
-/* Add to cart button */
+/* ── Add to cart button ── */
+#app .product-card .addToCart,
+#app .product-card .icon-cart,
+.main-container-wrapper .product-card .addToCart,
 .icon-cart,
 .addToCart {
-    background-color: var(--max-gold) !important;
+    background-color: #f5c518 !important;
+    border-color: #f5c518 !important;
     border-radius: 8px !important;
     padding: 6px 10px !important;
-    color: #000 !important;
+    color: #000000 !important;
 }
 
-/* Wishlist */
+#app .product-card .addToCart:hover,
+.main-container-wrapper .product-card .addToCart:hover {
+    background-color: #d4a80a !important;
+}
+
+/* ── Wishlist ── */
 .wishlist-icon,
 .icon-heart {
-    color: var(--max-text-muted) !important;
+    color: #aaaaaa !important;
+}
+
+.wishlist-icon:hover,
+.icon-heart:hover {
+    color: #ff4444 !important;
 }
 
 .wishlist-icon:hover,
