@@ -22,14 +22,11 @@ const CSS = `
   /* ══ KEYFRAMES ══ */
   @keyframes mq{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);}33%{transform:translateY(-10px) rotate(1deg);}66%{transform:translateY(-5px) rotate(-1deg);}}
+
   @keyframes pulse-ring{0%{transform:scale(1);opacity:.6;}70%{transform:scale(1.5);opacity:0;}100%{opacity:0;}}
   @keyframes shimmer-line{0%{transform:translateX(-100%);}100%{transform:translateX(200%)}}
   @keyframes gold-glow{0%,100%{text-shadow:0 0 20px rgba(245,197,24,.6),0 0 40px rgba(245,197,24,.3);}50%{text-shadow:0 0 35px rgba(245,197,24,1),0 0 70px rgba(245,197,24,.5),0 0 100px rgba(245,197,24,.2);}}
   @keyframes border-glow{0%,100%{box-shadow:0 0 12px rgba(245,197,24,.2),inset 0 0 12px rgba(245,197,24,.03);}50%{box-shadow:0 0 28px rgba(245,197,24,.4),inset 0 0 20px rgba(245,197,24,.06);}}
-  @keyframes card-float-a{0%,100%{transform:rotate(15deg) translateY(0);}50%{transform:rotate(15deg) translateY(-8px);}}
-  @keyframes card-float-b{0%,100%{transform:rotate(-7deg) translateY(0);}50%{transform:rotate(-7deg) translateY(-6px);}}
-  @keyframes card-float-c{0%,100%{transform:rotate(5deg) translateY(0);}50%{transform:rotate(5deg) translateY(-10px);}}
   @keyframes spark{0%{opacity:0;transform:scale(0) translateY(0);}20%{opacity:1;}100%{opacity:0;transform:scale(1.2) translateY(-30px);}}
   @keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
   @keyframes gradient-shift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%};} 
@@ -77,14 +74,22 @@ const CSS = `
     background:linear-gradient(145deg,#0c0c0c 0%,#111 40%,#090909 100%);
     border:1px solid rgba(245,197,24,.14);margin-bottom:14px;
     animation:border-glow 4s ease-in-out infinite;}
-  .hero-inner{display:flex;align-items:center;justify-content:space-between;
-    padding:30px 22px 0;gap:24px;flex-direction:column-reverse;}
-  .hero-text{flex:1;width:100%;text-align:center;}
+  .hero-inner{display:flex;align-items:center;justify-content:center;
+    padding:52px 28px 0;gap:24px;flex-direction:column;}
+  .hero-text{width:100%;text-align:center;max-width:640px;}
   .hero-title{font-size:clamp(30px,9vw,60px);font-weight:900;line-height:1.12;margin-bottom:18px;}
   .hero-sub{color:#666;font-size:13.5px;line-height:2;margin-bottom:24px;}
   .hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
   .hero-trust{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
-  .hero-cards{flex-shrink:0;position:relative;width:210px;height:240px;margin:0 auto;}
+  .hero-platforms{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px;padding-bottom:32px;}
+  .plat-chip{display:flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,#141414,#111);
+    border:1px solid rgba(245,197,24,.18);border-radius:12px;
+    padding:10px 18px;transition:all .22s;}
+  .plat-chip:hover{border-color:rgba(245,197,24,.45);background:rgba(245,197,24,.06);
+    box-shadow:0 4px 20px rgba(245,197,24,.12);}
+  .plat-name{color:#ddd;font-weight:800;font-size:13px;}
+  .plat-tag{color:#777;font-size:10px;font-weight:600;}
 
   /* Stats */
   .hero-stats{border-top:1px solid rgba(245,197,24,.08);
@@ -273,11 +278,10 @@ const CSS = `
     .nav-links{display:flex;gap:4px;}
     .mob-btn{display:none!important;}
 
-    .hero-inner{flex-direction:row;padding:56px 56px 0;gap:44px;}
-    .hero-text{text-align:right;width:auto;}
-    .hero-btns{justify-content:flex-start;}
-    .hero-trust{justify-content:flex-start;}
-    .hero-cards{width:256px;height:280px;margin:0;}
+    .hero-inner{flex-direction:column;padding:64px 56px 0;gap:32px;}
+    .hero-text{text-align:center;width:100%;}
+    .hero-btns{justify-content:center;}
+    .hero-trust{justify-content:center;}
 
     .hero-stats{grid-template-columns:repeat(4,1fr);}
     .stat-item{border-bottom:none!important;}
@@ -404,63 +408,6 @@ export default function HomePage() {
             ))}
 
             <div className="hero-inner">
-              {/* ── CARDS ── */}
-              <div className="hero-cards">
-                {/* Disney+ */}
-                <div style={{
-                  position: "absolute", width: 120, height: 156, top: 6, right: 0,
-                  background: "linear-gradient(160deg,#0d0c00,#1a1800,#0c0b00)",
-                  animation: "card-float-a 5s ease-in-out infinite",
-                  zIndex: 1, borderRadius: 18, overflow: "hidden",
-                  border: "1px solid rgba(245,197,24,.25)",
-                  boxShadow: "0 12px 40px rgba(0,0,0,.9),0 0 20px rgba(245,197,24,.1)",
-                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 7,
-                }}>
-                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 20%,rgba(245,197,24,.14) 0%,transparent 60%)" }} />
-                  <span style={{ color: G, fontWeight: 900, fontSize: 28, fontStyle: "italic", textShadow: "0 0 20px rgba(245,197,24,1),0 0 40px rgba(245,197,24,.5)", position: "relative", zIndex: 1 }}>D+</span>
-                  <span style={{ color: "#9a7c00", fontSize: 8, letterSpacing: 3, fontWeight: 800 }}>DISNEY+</span>
-                  <div style={{ width: 36, height: 1, background: "linear-gradient(to right,transparent,#f5c518,transparent)" }} />
-                </div>
-
-                {/* Shahid */}
-                <div style={{
-                  position: "absolute", width: 126, height: 162, top: 28, right: 32,
-                  background: "linear-gradient(160deg,#0e0d00,#1c1a00,#0d0c00)",
-                  animation: "card-float-b 6s ease-in-out infinite",
-                  zIndex: 2, borderRadius: 18, overflow: "hidden",
-                  border: "1px solid rgba(245,197,24,.3)",
-                  boxShadow: "0 14px 44px rgba(0,0,0,.9),0 0 28px rgba(245,197,24,.15)",
-                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 9,
-                }}>
-                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 30%,rgba(245,197,24,.17) 0%,transparent 62%)" }} />
-                  <div style={{ display: "flex", gap: 4, alignItems: "flex-end", position: "relative" }}>
-                    {[16, 26, 16].map((h, i) => (
-                      <div key={i} style={{ width: 7, height: h, borderRadius: 3, background: GD, boxShadow: "0 0 10px rgba(245,197,24,.7)" }} />
-                    ))}
-                  </div>
-                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 11, letterSpacing: 4, textShadow: "0 0 14px rgba(245,197,24,.6)", position: "relative" }}>SHAHID</span>
-                  <span style={{ background: "rgba(245,197,24,.14)", color: G, fontWeight: 900, fontSize: 8, padding: "2px 10px", borderRadius: 999, border: "1px solid rgba(245,197,24,.32)", textShadow: "0 0 8px rgba(245,197,24,.7)" }}>VIP</span>
-                </div>
-
-                {/* Netflix */}
-                <div style={{
-                  position: "absolute", width: 136, height: 172, top: 46, right: 58,
-                  background: "linear-gradient(165deg,#0c0b00,#1e1c00,#0e0d00)",
-                  animation: "card-float-c 7s ease-in-out infinite",
-                  zIndex: 3, borderRadius: 18, overflow: "hidden",
-                  border: "1px solid rgba(245,197,24,.38)",
-                  boxShadow: "0 16px 50px rgba(0,0,0,.95),0 0 45px rgba(245,197,24,.25)",
-                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-                }}>
-                  <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 40%,rgba(245,197,24,.22) 0%,transparent 58%)" }} />
-                  <span style={{ color: G, fontWeight: 900, fontSize: 80, fontStyle: "italic", letterSpacing: -6, lineHeight: 1, position: "relative", zIndex: 1, textShadow: "0 0 30px rgba(245,197,24,1),0 0 60px rgba(245,197,24,.6),0 0 100px rgba(245,197,24,.25)" }}>N</span>
-                  <span style={{ color: "#9a7c00", fontSize: 8, letterSpacing: 4, fontWeight: 900, marginTop: -14, position: "relative" }}>NETFLIX</span>
-                </div>
-
-                {/* Badge */}
-                <div className="ring" style={{ position: "absolute", bottom: 12, right: 6, zIndex: 10, background: GD, color: "#000", fontWeight: 900, fontSize: 9, padding: "4px 12px", borderRadius: 999, boxShadow: "0 4px 16px rgba(245,197,24,.65)", transform: "rotate(-6deg)" }}>✓ ضمان ذهبي</div>
-              </div>
-
               {/* ── TEXT ── */}
               <div className="hero-text">
                 <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(245,197,24,.09)", border: "1px solid rgba(245,197,24,.22)", borderRadius: 999, padding: "5px 15px", marginBottom: 20 }}>
@@ -483,12 +430,26 @@ export default function HomePage() {
                 <div className="hero-trust">
                   {["ضمان ذهبي", "تسليم فوري", "دفع آمن"].map((lb, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                      <span style={{
-                        display: "inline-block", width: 8, height: 8, borderRadius: "50%",
-                        background: GD,
-                        flexShrink: 0,
-                      }} />
+                      <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: GD, flexShrink: 0 }} />
                       <span style={{ color: "#888", fontSize: 12, fontWeight: 700 }}>{lb}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* ── Platform chips (static, replaces animated cards) ── */}
+                <div className="hero-platforms">
+                  {[
+                    { name: "شاهد VIP", tag: "رياضة + أفلام", icon: "▶" },
+                    { name: "نتفليكس", tag: "4K · خاص + مشترك", icon: "N" },
+                    { name: "ديزني+", tag: "عائلة + أنيميشن", icon: "D+" },
+                    { name: "يوتيوب", tag: "بريميوم", icon: "▷" },
+                  ].map((p, i) => (
+                    <div key={i} className="plat-chip">
+                      <span style={{ color: G, fontWeight: 900, fontSize: 15, width: 22, textAlign: "center", lineHeight: 1 }}>{p.icon}</span>
+                      <div style={{ textAlign: "right" }}>
+                        <div className="plat-name">{p.name}</div>
+                        <div className="plat-tag">{p.tag}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
